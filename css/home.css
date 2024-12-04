@@ -1,0 +1,301 @@
+.container {
+    padding-top: 72px;
+}
+
+.hero-section {
+    position: relative;
+    min-height: 600px;
+    padding: 6rem 2rem;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent-primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.cta-button.primary {
+    background: var(--color-accent-primary);
+    color: var(--color-text-primary);
+}
+
+.cta-button.secondary {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-primary);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    background: url('../images/hero-bg.png') no-repeat center right;
+    background-size: cover;
+    z-index: 1;
+}
+
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-accent-primary) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(50px);
+}
+
+.leaderboard-previews {
+    padding: 4rem 2rem;
+    background: var(--color-bg-primary);
+}
+
+.leaderboard-previews h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 3rem;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.preview-box {
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border-secondary);
+    transition: all 0.2s ease;
+}
+
+.preview-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-primary);
+}
+
+.preview-box h3 {
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.preview-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    color: var(--color-text-primary);
+    background: var(--color-hover);
+}
+
+.tab-button.active {
+    color: var(--color-text-primary);
+    background: var(--color-bg-tertiary);
+}
+
+.preview-content {
+    display: none;
+    margin-bottom: 1rem;
+}
+
+.preview-content.active {
+    display: block;
+}
+
+.preview-actions {
+    text-align: right;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border-secondary);
+}
+
+.view-all {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.view-all:hover {
+    color: var(--color-accent-secondary);
+}
+
+.preview-header {
+    display: grid;
+    grid-template-columns: 50px 80px 2fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-border-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.preview-item {
+    display: grid;
+    grid-template-columns: 50px 80px 2fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-border-secondary);
+    font-size: 0.75rem;
+    align-items: center;
+}
+
+.preview-item:last-child {
+    border-bottom: none;
+}
+
+.preview-item .rank {
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.preview-item .team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-item .name {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.preview-item .region {
+    color: var(--color-text-muted);
+    font-size: 0.7rem;
+    margin-top: 0.125rem;
+}
+
+.preview-item .record {
+    color: var(--color-text-secondary);
+}
+
+.preview-item .rating {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.preview-item .change {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.125rem 0.25rem;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 24px;
+}
+
+.preview-item .change.positive {
+    color: var(--color-success);
+    background: var(--color-success-bg);
+}
+
+.preview-item .change.negative {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+.preview-item.clickable {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.preview-item.clickable:hover {
+    background: var(--color-hover);
+}
+
+@media (max-width: 1200px) {
+    .preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .preview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-image {
+        display: none;
+    }
+}

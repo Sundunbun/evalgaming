@@ -1,6 +1,6 @@
 /* Overview Section */
 .overview-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(34, 197, 94, 0.1));
 }
 
@@ -78,7 +78,7 @@
 
 /* Signup Section */
 .signup-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: #000;
 }
 
@@ -88,7 +88,7 @@
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
+    gap: 6rem;
     align-items: start;
 }
 

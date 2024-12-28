@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <title>About - EVAL Gaming</title>
     <link rel="stylesheet" href="../css/shared/common.css">
     <link rel="stylesheet" href="../css/shared/header.css">
@@ -297,7 +298,7 @@
                         <li style="margin-bottom: 1.5rem; text-transform: none; font-size: 1.1rem; line-height: 1.6;"><span style="color: #9333ea; font-weight: 600;">Unlock Opportunities:</span> Access scholarships and esports pathways</li>
                     </ul>
                     <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 2rem; text-transform: none; font-style: italic; color: #9333ea;">Measure your performance. Share your progress. Connect with opportunities.</p>
-                    <a href="../signup.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 3rem; background: #9333ea; color: white; text-decoration: none; border-radius: 4px; font-size: 1.2rem; font-weight: 600; transition: all 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'; this.style.background='#7928ca'" onmouseout="this.style.transform='scale(1)'; this.style.background='#9333ea'">Join Now</a>
+                    <a id="joinNowButton" href="#" style="display: inline-block; margin-top: 2rem; padding: 1rem 3rem; background: #9333ea; color: white; text-decoration: none; border-radius: 4px; font-size: 1.2rem; font-weight: 600; transition: all 0.2s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'; this.style.background='#7928ca'" onmouseout="this.style.transform='scale(1)'; this.style.background='#9333ea'">Join Now</a>
                 </div>
             </section>
 
@@ -337,5 +338,6 @@
     <script src="../js/shared/utils.js"></script>
     <script src="../js/shared/header.js"></script>
     <script src="../js/shared/footer.js"></script>
+    <script src="../js/pages/about.js"></script>
 </body>
 </html>

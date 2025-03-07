@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // 👈 Use your repo name here if hosted on GitHub Pages
+  base: '/', // Ensure this is set correctly
   build: {
-    outDir: "dist",
+    outDir: 'dist',
   },
 });

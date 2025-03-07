@@ -3,15 +3,21 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // ✅ Ensures correct asset paths
+  base: './', 
   resolve: {
-    extensions: ['.js', '.jsx'], // ✅ Ensures JSX files are properly resolved
+    extensions: ['.js', '.jsx'],
   },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
       input: 'index.html',
+    },
+  },
+  server: {
+    strictPort: true,
+    mimeTypes: {
+      'text/jsx': ['js', 'jsx'], // ✅ Fixes MIME type issue
     },
   },
 });

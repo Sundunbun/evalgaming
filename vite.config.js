@@ -3,18 +3,12 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    extensions: ['.js', '.jsx'], // Ensure JSX files are properly resolved
-  },
-  server: {
-    mimeTypes: {
-      'text/jsx': ['js', 'jsx'], // Correct MIME type issue
-    },
-  },
+  base: './', // ✅ Fixes broken paths in `dist/`
   build: {
-    outDir: "dist",
+    outDir: 'dist',
+    assetsDir: 'assets', // ✅ Ensures assets go into `dist/assets/`
     rollupOptions: {
-      input: './index.html', // Ensure index.html is correctly bundled
-    }
+      input: 'index.html', // ✅ Ensures correct entry point
+    },
   },
 });

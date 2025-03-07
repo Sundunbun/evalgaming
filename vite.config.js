@@ -9,7 +9,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"), // ✅ Allows imports like "@/components/MyComponent"
     },
   },
-  base: "/", // ✅ Ensure this is correct for your GitHub Pages setup
+  base: "/eval2", // 
   build: {
     outDir: "dist",
   },

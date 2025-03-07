@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Ensure this is set correctly
+  base: "/", // If using GitHub Pages, set this to "/evalgaming/"
   build: {
-    outDir: 'dist',
+    outDir: "dist",
+    assetsDir: "assets",
   },
 });

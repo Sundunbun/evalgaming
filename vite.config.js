@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/", // Ensure the correct base path
   build: {
-    outDir: "dist",
+    outDir: "/eval2/",
   },
 });

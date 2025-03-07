@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/evalgaming/", // Ensure the correct base path
+  base: "/", // Ensure the correct base path
   build: {
     outDir: "dist",
   },

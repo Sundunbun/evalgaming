@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/evalgaming/", // 👈 Change this to match your repo name on GitHub Pages
+  base: "/", // 👈 Change this to match your repo name on GitHub Pages
   build: {
     outDir: "dist",
   },

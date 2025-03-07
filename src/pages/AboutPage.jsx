@@ -30,7 +30,7 @@ const founders = [
       "Gaming has always been about community. We're building technology that brings players together and creates opportunities for the next generation."
   },
   {
-    name: "Erica Yeung",
+    name: "Erika Yeung",
     role: "Chief Marketing Officer (CMO)",
     image: ericaImage,
     quote: "Marketing is all about storytelling. At Eval, we're creating a narrative where gaming talent meets real-world opportunities."

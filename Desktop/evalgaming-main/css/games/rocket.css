@@ -1,0 +1,371 @@
+.container {
+    padding-top: 72px;
+}
+
+.rankings-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.title-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-title-image {
+    height: 100px;
+    width: auto;
+    margin-bottom: 2rem;
+}
+
+/* Navigation Buttons */
+.rankings-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.leaderboards-title {
+    color: #9BA1A6;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-button .game-label {
+    color: #9BA1A6;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-button img {
+    height: auto;
+    width: 140px;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-button.active {
+    background: #1E2028;
+    border-color: #1E2028;
+}
+
+/* Leaderboard Styling */
+.leaderboard {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    display: grid;
+    grid-template-columns: 60px 80px 2fr 120px 120px 100px;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border-secondary);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.leaderboard-header > div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard-header > div:last-child {
+    text-align: center;
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.2;
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 60px 80px 2fr 120px 120px 100px;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-secondary);
+    transition: background-color 0.2s ease;
+}
+
+.leaderboard-row:hover {
+    background: var(--color-hover);
+}
+
+.rank {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+.change {
+    text-align: center;
+    font-weight: 500;
+}
+
+.change.positive {
+    color: var(--color-success);
+}
+
+.change.negative {
+    color: var(--color-error);
+}
+
+.change.neutral {
+    color: var(--color-text-muted);
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.team-name {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.team-location {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.record, .points {
+    text-align: center;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+}
+
+.rating {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.rankings-view {
+    display: none;
+}
+
+.rankings-view.active {
+    display: block;
+}
+
+.eval-composite {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.leaderboard-header .eval-composite {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .rankings-section {
+        padding: 1rem;
+    }
+    
+    .nav-button {
+        min-width: 180px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 50px 70px 1.5fr 100px 100px 90px;
+        gap: 0.75rem;
+        padding: 0.875rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-button {
+        min-width: 160px;
+    }
+    
+    .nav-button img {
+        width: 120px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 40px 60px 1.5fr 90px 90px;
+        font-size: 0.875rem;
+    }
+
+    .points {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button {
+        min-width: 140px;
+    }
+    
+    .nav-button img {
+        width: 100px;
+    }
+
+    .leaderboard-header,
+    .leaderboard-row {
+        grid-template-columns: 30px 50px 1fr 80px;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .record {
+        display: none;
+    }
+}
+
+/* Content Layout */
+.rankings-content {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Top 50 Preview */
+.top50-preview {
+    position: absolute;
+    right: -320px;
+    top: 0;
+    width: 300px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.top50-preview h3 {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.preview-header {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.preview-header span {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#top5-preview-container .preview-row {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-border-secondary);
+    align-items: center;
+}
+
+#top5-preview-container .preview-row:last-child {
+    border-bottom: none;
+}
+
+#top5-preview-container .rank {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+#top5-preview-container .player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+#top5-preview-container .player-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+#top5-preview-container .team-name {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+#top5-preview-container .rating {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+@media (max-width: 1800px) {
+    .top50-preview {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .rankings-content {
+        grid-template-columns: 250px 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .rankings-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .top50-preview {
+        display: none;
+    }
+}

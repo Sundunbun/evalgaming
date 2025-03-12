@@ -1,0 +1,153 @@
+.portal-section {
+    padding: 4rem 0;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+    color: white;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.portal-content {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.portal-info {
+    flex: 1;
+}
+
+.portal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.portal-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.portal-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.portal-button.primary {
+    background: #dc2626;
+    border-color: #dc2626;
+}
+
+.portal-button.primary:hover {
+    background: #ef4444;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-info {
+    margin-top: 4rem;
+    display: flex;
+    gap: 4rem;
+}
+
+.office-location,
+.inquiries {
+    flex: 1;
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #9ca3af;
+}
+
+.contact-info p {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.email-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.portal-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profile-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+@media (max-width: 1024px) {
+    .portal-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .portal-image {
+        order: -1;
+    }
+
+    .profile-image {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portal-section {
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 2rem;
+    }
+} 

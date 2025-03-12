@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Portal - EVAL Gaming</title>
+    <link rel="stylesheet" href="../css/shared/common.css">
+    <link rel="stylesheet" href="../css/shared/header.css">
+    <link rel="stylesheet" href="../css/pages/signup.css">
+</head>
+<body>
+    <header id="header"></header>
+    
+    <main class="container">
+        <section class="overview-section">
+            <div class="overview-content">
+                <h1>Overview of Eval for High School Athletes and Recruitment</h1>
+                <p class="intro">Eval is a platform designed to elevate high school athletes' visibility and help them showcase their skills for college recruiting. By combining performance tracking, rankings, and shareable reports, Eval empowers athletes to stand out to college recruiters while giving coaches the tools to highlight their players' achievements effectively.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Player Performance Tracking</h3>
+                        <ul>
+                            <li>Input, track, and showcase individual performance metrics</li>
+                            <li>Customizable evaluation criteria for specific strengths</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Leaderboards and Rankings</h3>
+                        <ul>
+                            <li>Real-time leaderboards across schools or leagues</li>
+                            <li>Customizable metrics to demonstrate unique skills</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Recruiting Profiles</h3>
+                        <ul>
+                            <li>Comprehensive player profiles with stats and highlights</li>
+                            <li>Shareable links for recruiters</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Analytics and Reports</h3>
+                        <ul>
+                            <li>Advanced performance analytics</li>
+                            <li>Shareable progress reports for recruiters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="signup-section">
+            <div class="signup-content">
+                <div class="form-side">
+                    <h2>Join the Eval High School Recruitment Network</h2>
+                    <p class="subtitle">Sign up now to gain access to tools designed for high school athletes aiming for college recruitment.</p>
+
+                    <form class="signup-form" id="signup-form">
+                        <div class="name-group">
+                            <div class="form-group">
+                                <input type="text" id="first-name" name="first-name" required>
+                                <label for="first-name">First name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="last-name" name="last-name" required>
+                                <label for="last-name">Last name</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="highschool" name="highschool" required>
+                            <label for="highschool">High School</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="account-name" name="account-name" required>
+                            <label for="account-name">Game Username</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="contact-name" name="contact-name" required>
+                            <label for="contact-name">Parent/Guardian Name</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" id="contact-phone" name="contact-phone" required>
+                            <label for="contact-phone">Contact Phone</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="twitter" name="twitter">
+                            <label for="twitter">Twitter/X Handle</label>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="accolades" name="accolades" rows="3"></textarea>
+                            <label for="accolades">Accolades (Academic/Esports)</label>
+                        </div>
+
+                        <button type="submit" class="submit-button">GET RANKED</button>
+                    </form>
+                </div>
+
+                <div class="info-side">
+                    <div class="benefits-section">
+                        <h3>Why Join Eval?</h3>
+                        <ul>
+                            <li>Showcase your skills to college recruiters</li>
+                            <li>Track your progress and improvement</li>
+                            <li>Get noticed by top collegiate programs</li>
+                            <li>Access recruitment resources and guidance</li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="office-location">
+                            <h3>Offices</h3>
+                            <p>34 Chambers St</p>
+                            <p>Princeton, NJ 08542</p>
+                        </div>
+
+                        <div class="inquiries">
+                            <h3>For Quick Inquiries</h3>
+                            <a href="mailto:Info@evalgaming.com" class="email-link">
+                                <img src="../images/icons/us-flag.svg" alt="US" class="flag-icon">
+                                Info@evalgaming.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="newsletter-signup">
+                        <h3>Stay Updated</h3>
+                        <p>Join our newsletter for recruitment tips and opportunities</p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Email Address">
+                            <button type="button" class="subscribe-button">
+                                <img src="../images/icons/arrow-right.svg" alt="Subscribe">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/shared/utils.js"></script>
+    <script src="../js/shared/header.js"></script>
+    <script src="../js/pages/signup.js"></script>
+</body>
+</html>

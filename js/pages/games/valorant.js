@@ -127,7 +127,7 @@ function createTop50Table(players) {
                                 <div class="player-name">${player.Username || ''}</div>
                                 <div class="player-realname">${player['Real Name'] || ''}</div>
                             </td>
-                            <td class="position">${player.Position || ''}</td>
+                            <td class="position">${player['Team Name'] || ''}</td>
                             <td class="team">${player['Group'] || ''}</td>
                             <td class="eval-composite">${rating.toFixed(2)}</td>
                         </tr>

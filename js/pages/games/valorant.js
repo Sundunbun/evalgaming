@@ -106,8 +106,8 @@ function createTop50Table(players) {
                     <th>RANK</th>
                     <th>CHANGE</th>
                     <th>PLAYER</th>
-                    <th>POSITION</th>
                     <th>TEAM</th>
+                    <th>GROUP</th>
                     <th>EVAL COMPOSITE</th>
                 </tr>
             </thead>

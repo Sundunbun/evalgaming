@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import allPlayers from '../assets/allplayers.png';
+import pwrRankings from '../assets/pwrrankings.png';
 
 const PlayerRankings = ({ initialView = null }) => {
   const [playerRankingsData, setPlayerRankingsData] = useState([]);
@@ -209,23 +210,23 @@ const PlayerRankings = ({ initialView = null }) => {
             </p>
           </button>
           <button
-            onClick={() => setView('players')}
-            className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
-          >
-            <img src="/assets/pwrrankings.png" alt="Power Rankings" className="h-12 mb-4" />
-            <h3 className="text-lg font-bold text-white mb-2">All Players</h3>
-            <p className="text-gray-400 text-sm text-center">
-              View complete player rankings and statistics.
-            </p>
-          </button>
-          <button
             onClick={() => setView('teams')}
             className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
           >
-            <img src={allPlayers} alt="All Players" className="h-12 mb-4" />
+            <img src={pwrRankings} alt="Power Rankings" className="h-12 mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">Team Rankings</h3>
             <p className="text-gray-400 text-sm text-center">
               View team rankings and match records.
+            </p>
+          </button>
+          <button
+            onClick={() => setView('players')}
+            className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
+          >
+            <img src={allPlayers} alt="All Players" className="h-12 mb-4" />
+            <h3 className="text-lg font-bold text-white mb-2">All Players</h3>
+            <p className="text-gray-400 text-sm text-center">
+              View complete player rankings and statistics.
             </p>
           </button>
         </div>

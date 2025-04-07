@@ -118,7 +118,7 @@ export default function HighSchoolRankings() {
             className="block bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 mb-4"
           >
             <div className="flex items-center justify-center gap-2 mb-2">
-              <img src={allPlayers} alt="All Players" className="h-8" />
+              <img src={pwrRankings} alt="Power Rankings" className="h-8" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Team Rankings</h3>
             <p className="text-gray-400 text-sm">
@@ -132,7 +132,7 @@ export default function HighSchoolRankings() {
             className="block bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300"
           >
             <div className="flex items-center justify-center gap-2 mb-2">
-              <img src={pwrRankings} alt="Power Rankings" className="h-8" />
+              <img src={allPlayers} alt="All Players" className="h-8" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">All Players</h3>
             <p className="text-gray-400 text-sm">

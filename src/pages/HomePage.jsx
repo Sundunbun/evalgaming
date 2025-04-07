@@ -41,7 +41,7 @@ const HomePage = () => {
           Valorant Rankings
         </h2>
         <p className="text-lg text-gray-300 mt-2 max-w-sm md:max-w-md">
-          Eval Gaming & GSE bring you the top 5v5 Valorant rankings this spring! 🏆 NJ's best battle for the top spot.
+          Eval Gaming & GSE bring you the top 5 v 5 Valorant rankings this spring! 🏆 NJ's best battle for the top spot.
         </p>
 
         {/* Riot-Style Button with Correct Link */}

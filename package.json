@@ -1,24 +1,26 @@
 {
     "name": "my-supabase-app-fixed",
     "homepage": "https://evalgaming.com/",
-    "dependencies":{
-    "@supabase/supabase-js":"^2.0.0",
-    "dotenv":"^16.4.7",
-    "react":"^18.2.0",
-    "react-dom":"^18.2.0",
-    "react-router-dom":"^6.2.0",
-    "tailwindcss":"^3.4.0"},
-"devDependencies":{
-    "@vitejs/plugin-react":"^2.0.0",
-    "autoprefixer":"^10.4.20",
-    "gh-pages": "^6.1.1",
-    "postcss":"^8.5.3",
-    "vite":"^3.0.0"},
-"scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-}
+    "dependencies": {
+        "@supabase/supabase-js": "^2.0.0",
+        "dotenv": "^16.4.7",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.2.0",
+        "tailwindcss": "^3.4.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^2.0.0",
+        "autoprefixer": "^10.4.20",
+        "gh-pages": "^6.3.0",
+        "postcss": "^8.5.3",
+        "vite": "^3.0.0"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
+    }
 }

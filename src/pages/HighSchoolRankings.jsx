@@ -35,13 +35,17 @@ export default function HighSchoolRankings() {
           .filter(row => row['Team'])
           .map(row => ({
             ...row,
-            rank: row['rank'] ? Number(row['rank']) : null
+            rank: row['Rank'] ? Number(row['Rank']) : null
           }))
           .sort((a, b) => {
-            // Use rank column if available, otherwise fall back to EVAL
+            // Always use rank column if available
             if (a.rank !== null && b.rank !== null) {
               return a.rank - b.rank;
             }
+            // If one has rank and other doesn't, prioritize the one with rank
+            if (a.rank !== null) return -1;
+            if (b.rank !== null) return 1;
+            // Fall back to EVAL score only if neither has rank
             return parseFloat(b['EVAL']) - parseFloat(a['EVAL']);
           });
 

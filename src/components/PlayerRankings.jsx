@@ -70,10 +70,10 @@ const PlayerRankings = ({ initialView = null }) => {
               eval: Number(parseFloat(row['EVAL']).toFixed(1)),
               team: row['Team'] || 'Unknown Team',
               change: row['CHANGE'] ? Number(parseFloat(row['CHANGE']).toFixed(1)) : null,
-              rank: row['rank'] ? Number(row['rank']) : null,
+              rank: row['Rank'] ? Number(row['Rank']) : null,
               // Add all other columns from the spreadsheet
               ...Object.fromEntries(
-                Object.entries(row).filter(([key]) => ![' USERNAME', 'Kills', 'Death', 'Assists', 'EVAL', 'Team', 'CHANGE', 'rank'].includes(key))
+                Object.entries(row).filter(([key]) => ![' USERNAME', 'Kills', 'Death', 'Assists', 'EVAL', 'Team', 'CHANGE', 'Rank'].includes(key))
                   .map(([key, value]) => {
                     // Try to parse numeric values and round them
                     const numValue = parseFloat(value);
@@ -92,6 +92,10 @@ const PlayerRankings = ({ initialView = null }) => {
             if (a.rank !== null && b.rank !== null) {
               return a.rank - b.rank;
             }
+            // If one has rank and other doesn't, prioritize the one with rank
+            if (a.rank !== null) return -1;
+            if (b.rank !== null) return 1;
+            // Fall back to EVAL score only if neither has rank
             return b.eval - a.eval;
           });
 
@@ -102,13 +106,17 @@ const PlayerRankings = ({ initialView = null }) => {
           .filter(row => row['Team'])
           .map(row => ({
             ...row,
-            rank: row['rank'] ? Number(row['rank']) : null
+            rank: row['Rank'] ? Number(row['Rank']) : null
           }))
           .sort((a, b) => {
-            // Use rank column if available, otherwise fall back to EVAL
+            // Always use rank column if available
             if (a.rank !== null && b.rank !== null) {
               return a.rank - b.rank;
             }
+            // If one has rank and other doesn't, prioritize the one with rank
+            if (a.rank !== null) return -1;
+            if (b.rank !== null) return 1;
+            // Fall back to EVAL score only if neither has rank
             return parseFloat(b['EVAL']) - parseFloat(a['EVAL']);
           });
 
@@ -132,7 +140,8 @@ const PlayerRankings = ({ initialView = null }) => {
   // Helper function to determine the color for change values
   const getChangeColor = (change) => {
     if (change === null) return 'text-gray-400';
-    return change >= 0 ? 'text-green-500' : 'text-red-500';
+    if (change === 0) return 'text-gray-400';
+    return change > 0 ? 'text-green-500' : 'text-red-500';
   };
 
   // Helper function to get change symbol

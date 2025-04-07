@@ -1,6 +1,6 @@
 {
     "name": "my-supabase-app-fixed",
-    "homepage": "https://sundunbun.github.io/evalgaming/",
+    "homepage": "https://evalgaming.com",
     "dependencies": {
         "@supabase/supabase-js": "^2.0.0",
         "dotenv": "^16.4.7",
@@ -21,6 +21,6 @@
         "build": "vite build",
         "preview": "vite preview",
         "predeploy": "npm run build && cp CNAME dist/",
-        "deploy": "gh-pages -d dist --branch viteWebsite"
+        "deploy": "gh-pages -d dist --dotfiles true"
     }
 }

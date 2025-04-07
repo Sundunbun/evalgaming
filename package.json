@@ -1,6 +1,6 @@
 {
     "name": "my-supabase-app-fixed",
-    "homepage": "https://evalgaming.com/",
+    "homepage": "https://evalgaming.com",
     "dependencies": {
         "@supabase/supabase-js": "^2.0.0",
         "dotenv": "^16.4.7",

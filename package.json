@@ -1,4 +1,3 @@
-
 {
     "name": "my-supabase-app-fixed",
     "homepage": "https://evalgaming.com/",
@@ -12,6 +11,7 @@
 "devDependencies":{
     "@vitejs/plugin-react":"^2.0.0",
     "autoprefixer":"^10.4.20",
+    "gh-pages": "^6.1.1",
     "postcss":"^8.5.3",
     "vite":"^3.0.0"},
 "scripts": {

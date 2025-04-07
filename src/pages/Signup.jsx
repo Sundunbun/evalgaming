@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import { Link } from 'react-router-dom';
 import rainbowStar from '../assets/rainbow_star.png'; // Adjust the path as needed
@@ -58,6 +58,10 @@ const Signup = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
+
+  useEffect(() => {
+    document.title = "EVAL | Sign Up";
+  }, []);
 
   return (
     <div style={{ maxWidth: '400px', margin: 'auto', marginTop: '80px', padding: '15px', background: '#1e1e1e', borderRadius: '8px', boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)', color: 'white' }}>

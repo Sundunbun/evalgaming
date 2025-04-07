@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CoachSignupForm from '../pages/CoachSignup';
 import coachImage from '../assets/coach2.png';
 
 const CoachRecruitingPage = () => {
+  useEffect(() => {
+    document.title = "EVAL | Coach Recruiting";
+  }, []);
+
   return (
     <div 
       className="flex flex-col items-center w-full min-h-screen px-4 pb-32 pt-24" 

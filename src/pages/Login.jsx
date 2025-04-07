@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import { Link, useNavigate } from 'react-router-dom';
 import evalLogo from '../assets/eLOGO_black.png'; // Ensure this path is correct
@@ -9,6 +9,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "EVAL | Login";
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

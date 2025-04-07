@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gseLogo from '../assets/GSE_LOGO.png';
 import kellerLogo from '../assets/keller.png';
 import psvLogo from '../assets/PSV.png';
 
-export default function Partnerships() {
+const Partnerships = () => {
+  useEffect(() => {
+    document.title = "EVAL | Partnerships";
+  }, []);
+
   return (
     <div className="bg-[#0f0f1a] text-white py-20 w-full">
       <div className="container mx-auto px-8">
@@ -77,4 +81,6 @@ export default function Partnerships() {
       </div>
     </div>
   );
-}
+};
+
+export default Partnerships;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import evalLogo from '../assets/eLOGO_black.png'; // Ensure this path is correct
 import rainbowStar from '../assets/rainbow_star.png'; // Ensure this path is correct
@@ -13,6 +13,10 @@ const CoachSignup = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.title = "EVAL | Coach Signup";
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

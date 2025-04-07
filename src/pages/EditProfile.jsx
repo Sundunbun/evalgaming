@@ -47,6 +47,10 @@ const EditProfile = () => {
     fetchPlayerData();
   }, []);
 
+  useEffect(() => {
+    document.title = "EVAL | Edit Profile";
+  }, []);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox') {

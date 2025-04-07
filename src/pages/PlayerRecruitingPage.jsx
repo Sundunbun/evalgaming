@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import playersImage from '../assets/players.png'; // ✅ Ensure the correct path
 
 const PlayerRecruitingPage = () => {
+  useEffect(() => {
+    document.title = "EVAL | Player Recruiting";
+  }, []);
+
   return (
     <div className="w-full bg-[#0f0f1a] text-white">
       {/* ✅ Centered Container with Increased Top Padding */}

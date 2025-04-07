@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserTypeSelection = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "EVAL | Select User Type";
+  }, []);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">

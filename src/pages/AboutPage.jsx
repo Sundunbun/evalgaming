@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import sekouHead from "../assets/sekou-head.png";
 import tylerHead from "../assets/tyler-head.png";
 import ryanHead from "../assets/ryan-head.jpeg";
@@ -45,11 +45,15 @@ const founders = [
     name: "Ibraheem Amin",
     role: "Software Engineer",
     image: ibraheemImage,
-    quote: "Data tells the story of performance. At Eval, we're making sure every player’s journey is backed by analytics and insight."
+    quote: "Data tells the story of performance. At Eval, we're making sure every player's journey is backed by analytics and insight."
   }
 ];
 
 const AboutPage = () => {
+  useEffect(() => {
+    document.title = "EVAL | About";
+  }, []);
+
   return (
     <div className="bg-black text-white min-h-screen">
       <div className="max-w-[1400px] mx-auto px-6 py-16">

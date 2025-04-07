@@ -12,6 +12,10 @@ export default function HighSchoolRankings() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    document.title = "EVAL | High School Rankings";
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch team data from Google Sheet
@@ -29,7 +33,17 @@ export default function HighSchoolRankings() {
         // Process team data
         const validTeamData = teamResults.data
           .filter(row => row['Team'])
-          .sort((a, b) => parseFloat(b['EVAL']) - parseFloat(a['EVAL']));
+          .map(row => ({
+            ...row,
+            rank: row['rank'] ? Number(row['rank']) : null
+          }))
+          .sort((a, b) => {
+            // Use rank column if available, otherwise fall back to EVAL
+            if (a.rank !== null && b.rank !== null) {
+              return a.rank - b.rank;
+            }
+            return parseFloat(b['EVAL']) - parseFloat(a['EVAL']);
+          });
 
         setTeamRankingsData(validTeamData);
         setLoading(false);

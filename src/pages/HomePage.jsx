@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import valorantHeader from "../assets/valorant_header.png";
 import valorantWhite from "../assets/valorant_white.png";
 import eLogoWhite from "../assets/eLOGO_white.png";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  useEffect(() => {
+    document.title = "EVAL";
+  }, []);
+
   return (
     <div className="relative w-full bg-[#0f0f1a] text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-24 py-20 md:py-32">
       
       {/* LEFT SIDE - College Esports Recruiting */}
       <div className="max-w-lg md:w-1/2">
         {/* EVAL Logo */}
-        <img 
-          src={eLogoWhite} 
-          alt="EVAL Gaming Logo" 
-          className="w-48 md:w-64 mb-6"
-        />
-        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-200 leading-tight">
-          The College Esports Recruiting Platform
-        </h2>
+        <div className="flex flex-col justify-center">
+          <div className="text-center">
+            <img src={eLogoWhite} alt="EVAL Gaming Logo" className="w-64 mx-auto mb-6" />
+          </div>
+          <h1 className="text-5xl font-bold text-white mb-6">
+            The College Esports Recruiting Platform
+          </h1>
+        </div>
         <ul className="text-gray-400 text-lg mt-6 space-y-2">
           <li>✔️ <span className="text-white">Verified College Coaches</span></li>
           <li>✔️ <span className="text-white">Free Accounts for Players</span></li>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PlayerRankings from '../components/PlayerRankings';
 
@@ -6,6 +6,10 @@ const Valorant = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const initialView = queryParams.get('view');
+
+  useEffect(() => {
+    document.title = "EVAL | Valorant Rankings";
+  }, []);
 
   return (
     <div className="w-full bg-[#0f0f1a] text-white py-16">

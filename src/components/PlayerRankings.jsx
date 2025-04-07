@@ -131,8 +131,14 @@ const PlayerRankings = ({ initialView = null }) => {
 
   // Helper function to determine the color for change values
   const getChangeColor = (change) => {
-    if (change === null || change === 0) return 'text-gray-400';
-    return change > 0 ? 'text-green-500' : 'text-red-500';
+    if (change === null) return 'text-gray-400';
+    return change >= 0 ? 'text-green-500' : 'text-red-500';
+  };
+
+  // Helper function to get change symbol
+  const getChangeSymbol = (change) => {
+    if (change === null) return '–';
+    return change >= 0 ? '↑' : '↓';
   };
 
   if (loading) return <div className="text-white text-center py-8">Loading...</div>;
@@ -263,7 +269,7 @@ const PlayerRankings = ({ initialView = null }) => {
                 <p className="font-bold text-white text-lg">EVAL: {parseFloat(team['EVAL']).toFixed(1)}</p>
                 {team['Change'] && (
                   <div className={`flex items-center justify-end gap-1 ${getChangeColor(parseFloat(team['Change']))}`}>
-                    <span>{parseFloat(team['Change']) > 0 ? '↑' : parseFloat(team['Change']) < 0 ? '↓' : '–'}</span>
+                    <span>{getChangeSymbol(parseFloat(team['Change']))}</span>
                     <span>{Math.abs(parseFloat(team['Change'])).toFixed(1)}</span>
                   </div>
                 )}
@@ -291,7 +297,7 @@ const PlayerRankings = ({ initialView = null }) => {
                 <p className="text-sm text-gray-400">{player.kills}-{player.death}-{player.assists}</p>
                 {player.change !== null && (
                   <div className={`flex items-center justify-end gap-1 ${getChangeColor(player.change)}`}>
-                    <span>{player.change > 0 ? '↑' : player.change < 0 ? '↓' : '–'}</span>
+                    <span>{getChangeSymbol(player.change)}</span>
                     <span>{Math.abs(player.change).toFixed(1)}</span>
                   </div>
                 )}

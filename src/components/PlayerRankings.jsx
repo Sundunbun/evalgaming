@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
-const PlayerRankings = () => {
+const PlayerRankings = ({ initialView = null }) => {
   const [playerRankingsData, setPlayerRankingsData] = useState([]);
   const [teamRankingsData, setTeamRankingsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [view, setView] = useState(null);
+  const [view, setView] = useState(initialView);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   useEffect(() => {

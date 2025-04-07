@@ -1,6 +1,7 @@
 import React from "react";
 import valorantHeader from "../assets/valorant_header.png";
 import valorantWhite from "../assets/valorant_white.png";
+import eLogoWhite from "../assets/eLOGO_white.png";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -9,6 +10,12 @@ const HomePage = () => {
       
       {/* LEFT SIDE - College Esports Recruiting */}
       <div className="max-w-lg md:w-1/2">
+        {/* EVAL Logo */}
+        <img 
+          src={eLogoWhite} 
+          alt="EVAL Gaming Logo" 
+          className="w-48 md:w-64 mb-6"
+        />
         <h2 className="text-4xl md:text-6xl font-extrabold text-gray-200 leading-tight">
           The College Esports Recruiting Platform
         </h2>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gseLogo from '../assets/GSE_LOGO.png';
 import pwrRankings from '../assets/pwrrankings.png';
 import top50 from '../assets/top50.png';
-import eLogoBlack from '../assets/eLOGO_black.png';
+import allPlayers from '../assets/allplayers.png';
 import Papa from 'papaparse';
 
 export default function HighSchoolRankings() {
@@ -103,7 +103,7 @@ export default function HighSchoolRankings() {
             to="/rankings/valorant?view=top50" 
             className="block bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 mb-4"
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
               <img src={top50} alt="Top 50" className="h-8" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Top 50 Players</h3>
@@ -117,9 +117,8 @@ export default function HighSchoolRankings() {
             to="/rankings/valorant?view=teams" 
             className="block bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 mb-4"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <img src={pwrRankings} alt="Power Rankings" className="h-8" />
-              <img src={eLogoBlack} alt="E Logo" className="h-8" />
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <img src={allPlayers} alt="All Players" className="h-8" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Team Rankings</h3>
             <p className="text-gray-400 text-sm">
@@ -132,7 +131,7 @@ export default function HighSchoolRankings() {
             to="/rankings/valorant?view=players" 
             className="block bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300"
           >
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-2">
               <img src={pwrRankings} alt="Power Rankings" className="h-8" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">All Players</h3>

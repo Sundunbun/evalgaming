@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
+import allPlayers from '../assets/allplayers.png';
 
 const PlayerRankings = ({ initialView = null }) => {
   const [playerRankingsData, setPlayerRankingsData] = useState([]);
@@ -68,9 +69,10 @@ const PlayerRankings = ({ initialView = null }) => {
               eval: Number(parseFloat(row['EVAL']).toFixed(1)),
               team: row['Team'] || 'Unknown Team',
               change: row['CHANGE'] ? Number(parseFloat(row['CHANGE']).toFixed(1)) : null,
+              rank: row['rank'] ? Number(row['rank']) : null,
               // Add all other columns from the spreadsheet
               ...Object.fromEntries(
-                Object.entries(row).filter(([key]) => ![' USERNAME', 'Kills', 'Death', 'Assists', 'EVAL', 'Team', 'CHANGE'].includes(key))
+                Object.entries(row).filter(([key]) => ![' USERNAME', 'Kills', 'Death', 'Assists', 'EVAL', 'Team', 'CHANGE', 'rank'].includes(key))
                   .map(([key, value]) => {
                     // Try to parse numeric values and round them
                     const numValue = parseFloat(value);
@@ -84,14 +86,30 @@ const PlayerRankings = ({ initialView = null }) => {
             console.log('Processed player:', player);
             return player;
           })
-          .sort((a, b) => b.eval - a.eval);
+          .sort((a, b) => {
+            // Use rank column if available, otherwise fall back to EVAL
+            if (a.rank !== null && b.rank !== null) {
+              return a.rank - b.rank;
+            }
+            return b.eval - a.eval;
+          });
 
         console.log('Processed player data:', validPlayerData.slice(0, 3));
 
         // Process team data
         const validTeamData = teamResults.data
           .filter(row => row['Team'])
-          .sort((a, b) => parseFloat(b['EVAL']) - parseFloat(a['EVAL']));
+          .map(row => ({
+            ...row,
+            rank: row['rank'] ? Number(row['rank']) : null
+          }))
+          .sort((a, b) => {
+            // Use rank column if available, otherwise fall back to EVAL
+            if (a.rank !== null && b.rank !== null) {
+              return a.rank - b.rank;
+            }
+            return parseFloat(b['EVAL']) - parseFloat(a['EVAL']);
+          });
 
         setPlayerRankingsData(validPlayerData);
         setTeamRankingsData(validTeamData);
@@ -108,6 +126,12 @@ const PlayerRankings = ({ initialView = null }) => {
 
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
+  };
+
+  // Helper function to determine the color for change values
+  const getChangeColor = (change) => {
+    if (change === null || change === 0) return 'text-gray-400';
+    return change > 0 ? 'text-green-500' : 'text-red-500';
   };
 
   if (loading) return <div className="text-white text-center py-8">Loading...</div>;
@@ -198,10 +222,7 @@ const PlayerRankings = ({ initialView = null }) => {
             onClick={() => setView('teams')}
             className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/assets/pwrrankings.png" alt="Power Rankings" className="h-12" />
-              <img src="/assets/eLOGO_black.png" alt="E Logo" className="h-12" />
-            </div>
+            <img src={allPlayers} alt="All Players" className="h-12 mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">Team Rankings</h3>
             <p className="text-gray-400 text-sm text-center">
               View team rankings and match records.
@@ -240,8 +261,8 @@ const PlayerRankings = ({ initialView = null }) => {
               <div className="text-right">
                 <p className="font-bold text-white text-lg">EVAL: {parseFloat(team['EVAL']).toFixed(1)}</p>
                 {team['Change'] && (
-                  <div className={`flex items-center justify-end gap-1 ${parseFloat(team['Change']) > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                    <span>{parseFloat(team['Change']) > 0 ? '↑' : '↓'}</span>
+                  <div className={`flex items-center justify-end gap-1 ${getChangeColor(parseFloat(team['Change']))}`}>
+                    <span>{parseFloat(team['Change']) > 0 ? '↑' : parseFloat(team['Change']) < 0 ? '↓' : '–'}</span>
                     <span>{Math.abs(parseFloat(team['Change'])).toFixed(1)}</span>
                   </div>
                 )}
@@ -268,8 +289,8 @@ const PlayerRankings = ({ initialView = null }) => {
                 <p className="font-bold text-white text-lg">EVAL: {player.eval.toFixed(1)}</p>
                 <p className="text-sm text-gray-400">{player.kills}-{player.death}-{player.assists}</p>
                 {player.change !== null && (
-                  <div className={`flex items-center justify-end gap-1 ${player.change > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                    <span>{player.change > 0 ? '↑' : '↓'}</span>
+                  <div className={`flex items-center justify-end gap-1 ${getChangeColor(player.change)}`}>
+                    <span>{player.change > 0 ? '↑' : player.change < 0 ? '↓' : '–'}</span>
                     <span>{Math.abs(player.change).toFixed(1)}</span>
                   </div>
                 )}

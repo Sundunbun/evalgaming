@@ -178,7 +178,7 @@ const PlayerRankings = () => {
             onClick={() => setView('top50')}
             className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
           >
-            <img src={import.meta.env.BASE_URL + "src/assets/top50.png"} alt="Top 50" className="h-12 mb-4" />
+            <img src="/assets/top50.png" alt="Top 50" className="h-12 mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">Top 50 Players</h3>
             <p className="text-gray-400 text-sm text-center">
               View the top 50 players ranked by EVAL score.
@@ -188,7 +188,7 @@ const PlayerRankings = () => {
             onClick={() => setView('players')}
             className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
           >
-            <img src={import.meta.env.BASE_URL + "src/assets/pwrrankings.png"} alt="Power Rankings" className="h-12 mb-4" />
+            <img src="/assets/pwrrankings.png" alt="Power Rankings" className="h-12 mb-4" />
             <h3 className="text-lg font-bold text-white mb-2">All Players</h3>
             <p className="text-gray-400 text-sm text-center">
               View complete player rankings and statistics.
@@ -199,8 +199,8 @@ const PlayerRankings = () => {
             className="bg-[#1a1a1a] hover:bg-[#222] p-5 rounded-xl border border-[#333] hover:border-purple-500 transition-all duration-300 flex flex-col items-center"
           >
             <div className="flex items-center gap-2 mb-4">
-              <img src={import.meta.env.BASE_URL + "src/assets/pwrrankings.png"} alt="Power Rankings" className="h-12" />
-              <img src={import.meta.env.BASE_URL + "src/assets/eLOGO_black.png"} alt="E Logo" className="h-12" />
+              <img src="/assets/pwrrankings.png" alt="Power Rankings" className="h-12" />
+              <img src="/assets/eLOGO_black.png" alt="E Logo" className="h-12" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Team Rankings</h3>
             <p className="text-gray-400 text-sm text-center">

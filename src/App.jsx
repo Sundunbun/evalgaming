@@ -10,6 +10,7 @@ import PartnershipSignup from './pages/PartnershipSignup';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TournamentLeaderboard from './pages/TournamentLeaderboard';
+import TournamentBracket from './pages/TournamentBracket';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -52,7 +53,7 @@ function App() {
         <Route path="/rankings/valorant" element={<Valorant />} />
 
         {/* ✅ Tournament Pages */}
-        <Route path="/tournament-bracket" element={<div>Tournament Bracket</div>} />
+        <Route path="/tournament-bracket" element={<TournamentBracket />} />
         <Route path="/tournament-leaderboard" element={<TournamentLeaderboard />} />
         
         {/* ✅ Authentication & User Management */}

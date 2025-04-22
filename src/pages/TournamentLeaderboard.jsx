@@ -70,23 +70,23 @@ export default function TournamentLeaderboard() {
 
   // Function to determine background color based on rank
   const getBackgroundColor = (rank) => {
-    if (rank === 1) return "from-cyan-600 to-cyan-800"
-    if (rank <= 4) return "from-yellow-500 to-yellow-700"
-    if (rank === 5) return "from-red-600 to-red-800"
-    return "from-blue-700 to-blue-900"
+    if (rank === 1) return "from-cyan-600 to-cyan-800 hover:from-cyan-700 hover:to-cyan-900 transition-all duration-300"
+    if (rank <= 4) return "from-yellow-500 to-yellow-700 hover:from-yellow-600 hover:to-yellow-800 transition-all duration-300"
+    if (rank === 5) return "from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 transition-all duration-300"
+    return "from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 transition-all duration-300"
   }
 
   // Function to determine text color based on rank
   const getTextColor = (rank) => {
-    if (rank === 1) return "text-cyan-300"
-    if (rank <= 4) return "text-yellow-300"
-    if (rank === 5) return "text-red-300"
+    if (rank === 1) return "text-cyan-300 hover:text-cyan-400"
+    if (rank <= 4) return "text-yellow-300 hover:text-yellow-400"
+    if (rank === 5) return "text-red-300 hover:text-red-400"
     return "text-white"
   }
 
   return (
-    <div className="bg-gray-900 p-4 md:p-6 max-w-3xl mx-auto rounded-lg">
-      <div className="mb-4">
+    <div className="bg-gray-900 p-4 md:p-6 mx-0 rounded-lg">
+      <div className="mx-[10%] mb-4 ">
 
 
         <h1 className="text-white text-center text-2xl md:text-3xl font-bold tracking-wider mb-1">
@@ -102,7 +102,7 @@ export default function TournamentLeaderboard() {
       </div>
 
       {/* Top 5 Players */}
-      <div className="space-y-1 mb-4">
+      <div className="mx-[10%] space-y-1 mb-4">
         {topPlayers.map((player) => (
           <div
             key={player.rank}
@@ -115,8 +115,10 @@ export default function TournamentLeaderboard() {
         ))}
       </div>
 
-      {/* Toggle button for remaining players */}
-      <button
+        
+          {/* Toggle button for remaining players */}
+          <div className="mx-[10%]">
+            <button
         className="flex items-center justify-center w-full text-gray-300 text-sm mb-2"
         onClick={() => setExpanded(!expanded)}
       >
@@ -130,11 +132,13 @@ export default function TournamentLeaderboard() {
           </>
         )}
       </button>
+          </div>
+
 
       {/* Remaining Players Grid */}
       {expanded && (
-        <div className="grid grid-cols-5 gap-1 text-xs">
-          {remainingPlayers.map((player) => (
+        <div className="mx-[10%] grid grid-cols-5 gap-1 text-xs">
+                  {remainingPlayers.map((player) => (
             <div key={player.rank} className="bg-gradient-to-r from-blue-900 to-blue-950 p-1 rounded">
               <div className="flex justify-between items-center">
                 <span className="text-white font-medium">{player.rank}</span>
@@ -146,7 +150,7 @@ export default function TournamentLeaderboard() {
         </div>
       )}
 
-      <div className="text-right text-xs text-gray-500 mt-2">EVAL</div>
+      <div className="mx-[10%] text-right text-xs text-gray-500 mt-2">EVAL</div>
     </div>
   )
 }

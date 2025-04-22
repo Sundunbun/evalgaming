@@ -50,6 +50,10 @@ function App() {
         <Route path="/high-school-rankings" element={<HighSchoolRankings />} />
         <Route path="/rankings/valorant" element={<Valorant />} />
 
+        {/* ✅ Tournament Pages */}
+        <Route path="/tournament-bracket" element={<div>Tournament Bracket</div>} />
+        <Route path="/tournament-leaderboard" element={<div>Tournament Leaderboard</div>} />
+        
         {/* ✅ Authentication & User Management */}
         <Route path="/login" element={<Login />} />
         <Route path="/user-selection" element={<UserTypeSelection />} />

@@ -84,6 +84,7 @@ const Navbar = () => {
               <Link to="/tournament-leaderboard" className="dropdown-item">Tournament Leaderboard</Link>
             </div>
           )}
+        </div>
 
         
 

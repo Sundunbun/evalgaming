@@ -8,6 +8,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [recruitingDropdownOpen, setRecruitingDropdownOpen] = useState(false);
+  const [legalDropdownOpen, setLegalDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -72,6 +73,21 @@ const Navbar = () => {
         <Link to="/high-school-rankings" className="nav-link">HS Rankings</Link>
         <Link to="/about" className="nav-link">About</Link>
         <Link to="/partnerships" className="nav-link">Partnerships</Link>
+        
+        {/* Legal Links */}
+        <div 
+          className="dropdown-container" 
+          onMouseEnter={() => setLegalDropdownOpen(true)} 
+          onMouseLeave={() => setLegalDropdownOpen(false)}
+        >
+          <button className="dropdown-btn">Legal ▼</button>
+          {legalDropdownOpen && (
+            <div className="dropdown-menu">
+              <Link to="/terms-of-service" className="dropdown-item">Terms of Service</Link>
+              <Link to="/privacy-policy" className="dropdown-item">Privacy Policy</Link>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Right Section */}

@@ -6,7 +6,9 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import PartnershipsPage from './pages/PartnershipsPage';
-import PartnershipSignup from './pages/PartnershipSignup'; // ✅ Added Partnership Signup Page
+import PartnershipSignup from './pages/PartnershipSignup';
+import TermsOfService from './pages/TermsOfService';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -35,7 +37,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/partnerships" element={<PartnershipsPage />} />
-        <Route path="/partnership-signup" element={<PartnershipSignup />} /> {/* ✅ Added this */}
+        <Route path="/partnership-signup" element={<PartnershipSignup />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         {/* ✅ Recruiting & Profiles */}
         <Route path="/coach-recruiting" element={<CoachRecruitingPage />} />

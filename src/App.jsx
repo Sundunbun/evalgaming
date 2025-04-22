@@ -9,6 +9,7 @@ import PartnershipsPage from './pages/PartnershipsPage';
 import PartnershipSignup from './pages/PartnershipSignup';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TournamentLeaderboard from './pages/TournamentLeaderboard';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -52,7 +53,7 @@ function App() {
 
         {/* ✅ Tournament Pages */}
         <Route path="/tournament-bracket" element={<div>Tournament Bracket</div>} />
-        <Route path="/tournament-leaderboard" element={<div>Tournament Leaderboard</div>} />
+        <Route path="/tournament-leaderboard" element={<TournamentLeaderboard />} />
         
         {/* ✅ Authentication & User Management */}
         <Route path="/login" element={<Login />} />

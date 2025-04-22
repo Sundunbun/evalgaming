@@ -87,10 +87,7 @@ export default function TournamentLeaderboard() {
   return (
     <div className="bg-gray-900 p-4 md:p-6 max-w-3xl mx-auto rounded-lg">
       <div className="mb-4">
-        <div className="text-gray-300 text-sm mb-2">
-          From <span className="font-semibold">EVAL</span> community on{" "}
-          <span className="text-red-500 font-semibold">EvalGaming</span>
-        </div>
+
 
         <h1 className="text-white text-center text-2xl md:text-3xl font-bold tracking-wider mb-1">
           TOURNAMENT TOP 50 PLAYERS LIST

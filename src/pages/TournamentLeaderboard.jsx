@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 export default function TournamentLeaderboard() {
 
   useEffect(() => {
-    document.title = "EVAL | High School Rankings";
+    document.title = "EVAL | Tournament Leaderboard";
   }, []);
 
   const [expanded, setExpanded] = useState(false)

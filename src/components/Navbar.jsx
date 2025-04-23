@@ -9,7 +9,6 @@ const Navbar = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [recruitingDropdownOpen, setRecruitingDropdownOpen] = useState(false);
   const [legalDropdownOpen, setLegalDropdownOpen] = useState(false);
-  const  [tournamentDropdownOpen, setTournamentDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -54,8 +53,8 @@ const Navbar = () => {
           <img src={eLogoWhite} alt="EVAL Gaming Logo" className="logo-img" />
         </Link>
 
-       
-
+        <Link to="/" className="nav-link">Home</Link>
+        
         {/* Recruiting Dropdown */}
         <div 
           className="dropdown-container" 
@@ -70,24 +69,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-
-        {/* Tournament Dropdown */}
-        <div 
-          className="dropdown-container" 
-          onMouseEnter={() => setTournamentDropdownOpen(true)} 
-          onMouseLeave={() => setTournamentDropdownOpen(false)}
-        >
-          <button className="dropdown-btn">Tournaments ▼</button>
-          {tournamentDropdownOpen && (
-            <div className="dropdown-menu">
-              <Link to="/tournament-bracket" className="dropdown-item">Tournament Bracket</Link>
-              <Link to="/tournament-leaderboard" className="dropdown-item">Tournament Leaderboard</Link>
-            </div>
-          )}
-        </div>
-
         
-
         <Link to="/high-school-rankings" className="nav-link">HS Rankings</Link>
         <Link to="/about" className="nav-link">About</Link>
         <Link to="/partnerships" className="nav-link">Partnerships</Link>

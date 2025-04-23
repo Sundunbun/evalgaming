@@ -62,27 +62,42 @@ const PlayerRankings = ({ initialView = null }) => {
             return isValid;
           })
           .map(row => {
+            // Helper function to check if a value is empty/blank
+            const getValue = (value, key) => {
+              console.log(`Processing ${key}:`, value);
+              if (!value || value === '' || value === ' ' || value === undefined || value === null) {
+                console.log(`${key} is empty, returning '-'`);
+                return '-';
+              }
+              const numValue = Number(parseFloat(value).toFixed(1));
+              if (isNaN(numValue)) {
+                console.log(`${key} is not a number, returning '-'`);
+                return '-';
+              }
+              return numValue;
+            };
+
             const player = {
               username: row[' USERNAME'].trim(),
-              kills: Number(parseFloat(row['Kills']).toFixed(1)),
-              death: Number(parseFloat(row['Death']).toFixed(1)),
-              assists: Number(parseFloat(row['Assists']).toFixed(1)),
-              eval: Number(parseFloat(row['EVAL']).toFixed(1)),
+              kills: getValue(row['Kills'], 'Kills'),
+              death: getValue(row['Death'], 'Death'),
+              assists: getValue(row['Assists'], 'Assists'),
+              eval: getValue(row['EVAL'], 'EVAL'),
               team: row['Team'] || 'Unknown Team',
               change: row['CHANGE'] ? Number(parseFloat(row['CHANGE']).toFixed(1)) : null,
               rank: row['Rank'] ? Number(row['Rank']) : null,
-              // Add all other columns from the spreadsheet
-              ...Object.fromEntries(
-                Object.entries(row).filter(([key]) => ![' USERNAME', 'Kills', 'Death', 'Assists', 'EVAL', 'Team', 'CHANGE', 'Rank'].includes(key))
-                  .map(([key, value]) => {
-                    // Try to parse numeric values and round them
-                    const numValue = parseFloat(value);
-                    if (!isNaN(numValue)) {
-                      return [key, Number(numValue.toFixed(1))];
-                    }
-                    return [key, value];
-                  })
-              )
+              // Additional stats for profile view
+              Kills: getValue(row['Kills'], 'Kills'),
+              Death: getValue(row['Death'], 'Death'),
+              Assists: getValue(row['Assists'], 'Assists'),
+              EVAL: getValue(row['EVAL'], 'EVAL'),
+              Team: row['Team'] || 'Unknown Team',
+              Rank: row['Rank'] ? Number(row['Rank']) : null,
+              CHANGE: row['CHANGE'] ? Number(parseFloat(row['CHANGE']).toFixed(1)) : null,
+              'Econ Rating': getValue(row['Econ Rating'], 'Econ Rating'),
+              'First Bloods': getValue(row['First Bloods'], 'First Bloods'),
+              Plants: getValue(row['Plants'], 'Plants'),
+              Defuses: getValue(row['Defuses'], 'Defuses')
             };
             console.log('Processed player:', player);
             return player;
@@ -194,14 +209,71 @@ const PlayerRankings = ({ initialView = null }) => {
           <div className="mt-8">
             <h4 className="text-xl font-bold text-white mb-4">Additional Stats</h4>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {Object.entries(selectedPlayer)
-                .filter(([key]) => !['username', 'kills', 'death', 'assists', 'eval', 'team'].includes(key))
-                .map(([key, value]) => (
-                  <div key={key} className="bg-black/50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-400 mb-1">{key.replace(/_/g, ' ').toUpperCase()}</p>
-                    <p className="text-lg font-bold text-white">{value}</p>
-                  </div>
-                ))}
+              {/* Kills */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">KILLS</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Kills || 0}</p>
+              </div>
+              
+              {/* Death */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">DEATH</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Death || 0}</p>
+              </div>
+              
+              {/* Assists */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">ASSISTS</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Assists || 0}</p>
+              </div>
+              
+              {/* Econ Rating */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">ECON RATING</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer['Econ Rating'] || 0}</p>
+              </div>
+              
+              {/* First Bloods */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">FIRST BLOODS</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer['First Bloods'] || 0}</p>
+              </div>
+              
+              {/* Plants */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">PLANTS</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Plants || 0}</p>
+              </div>
+              
+              {/* Defuses */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">DEFUSES</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Defuses || 0}</p>
+              </div>
+              
+              {/* EVAL */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">EVAL</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.EVAL || 0}</p>
+              </div>
+              
+              {/* Team */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">TEAM</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Team || 'N/A'}</p>
+              </div>
+              
+              {/* Rank */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">RANK</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.Rank || 'N/A'}</p>
+              </div>
+              
+              {/* CHANGE */}
+              <div className="bg-black/50 p-4 rounded-lg">
+                <p className="text-sm text-gray-400 mb-1">CHANGE</p>
+                <p className="text-lg font-bold text-white">{selectedPlayer.CHANGE || 0}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -270,7 +342,10 @@ const PlayerRankings = ({ initialView = null }) => {
               <div className="flex-1">
                 <div className="flex items-center gap-4">
                   <span className="text-purple-400 font-bold text-lg">#{index + 1}</span>
-                  <p className="font-bold text-white text-lg">{team['Team']}</p>
+                  <div>
+                    <p className="font-bold text-white text-lg">{team['Team']}</p>
+                    <p className="text-sm text-gray-400">{team['Group'] || 'No Group'}</p>
+                  </div>
                 </div>
                 <p className="text-sm text-gray-400 mt-1">Record: {team['Wins']}-{team['Losses']}-{team['Ties']}</p>
               </div>

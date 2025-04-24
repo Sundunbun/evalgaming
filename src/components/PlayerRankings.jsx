@@ -344,7 +344,7 @@ const PlayerRankings = ({ initialView = null }) => {
                   <span className="text-purple-400 font-bold text-lg">#{index + 1}</span>
                   <div>
                     <p className="font-bold text-white text-lg">{team['Team']}</p>
-                    <p className="text-sm text-gray-400">{team['Group'] || 'No Group'}</p>
+                    <p className="text-sm text-gray-400 text-left">{team['Group'] || 'No Group'}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-400 mt-1">Record: {team['Wins']}-{team['Losses']}-{team['Ties']}</p>

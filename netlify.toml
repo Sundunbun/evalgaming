@@ -3,4 +3,4 @@
 
 [[redirects]]
   from = "/*"
-  to = "root?dest=*"
+  to = "root?dest=player_recruiting"

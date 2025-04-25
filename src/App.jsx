@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 // ✅ Page Imports
@@ -30,24 +30,9 @@ import CoachSignup from './pages/CoachSignup';
 
 import './App.css';
 
-// Add this component to handle the redirect
-const RedirectHandler = () => {
-  const location = useLocation();
-  
-  React.useEffect(() => {
-    if (location.pathname.startsWith('/?/')) {
-      const path = location.pathname.slice(3).replace(/~and~/g, '&');
-      window.history.replaceState({}, '', path);
-    }
-  }, [location]);
-
-  return null;
-};
-
 function App() {
   return (
     <Router>
-      <RedirectHandler />
       <div className="App">
         <Navbar />
         <Routes>

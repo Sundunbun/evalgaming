@@ -2,5 +2,5 @@
   publish = "."
 
 [[redirects]]
-  from = "/player-recruiting"
-  to = "root?dest=player-recruiting"
+  from = "/*"
+  to = "/index.html"

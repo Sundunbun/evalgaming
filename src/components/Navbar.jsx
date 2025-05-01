@@ -79,11 +79,11 @@ const Navbar = () => {
           onMouseEnter={() => setTournamentDropdownOpen(true)} 
           onMouseLeave={() => setTournamentDropdownOpen(false)}
         >
-          <button className="dropdown-btn">Tournaments ▼</button>
+          <button className="dropdown-btn">Playoffs ▼</button>
           {tournamentDropdownOpen && (
             <div className="dropdown-menu">
-              <Link to="/tournament-bracket" className="dropdown-item">Bracket</Link>
-              <Link to="/tournament-rankings" className="dropdown-item">Tournament Rankings</Link>
+              {/* <Link to="/tournament-bracket" className="dropdown-item">Bracket</Link> */}
+              <Link to="/tournament-rankings" className="dropdown-item">Playoffs Rankings</Link>
             </div>
           )}
         </div>

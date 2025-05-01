@@ -10,9 +10,9 @@ import PartnershipsPage from './pages/PartnershipsPage';
 import PartnershipSignup from './pages/PartnershipSignup';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import TournamentBracket from './pages/TournamentBracket';
-import TournamentRankings from './components/TournamentRankings';
-import TournamentPlayerProfile from './pages/TournamentPlayerProfile';
+import PlayoffsBracket from './pages/TournamentBracket';
+import PlayoffsRankings from './components/PlayoffsRankings.jsx';
+import PlayoffsPlayerProfile from './pages/TournamentPlayerProfile';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -56,9 +56,9 @@ function App() {
           <Route path="/rankings/valorant" element={<Valorant />} />
 
           {/* ✅ Tournament Pages */}
-          <Route path="/tournament-bracket" element={<TournamentBracket />} />
-          <Route path="/tournament-rankings" element={<TournamentRankings />} />
-          <Route path="/tournament-player-profile" element={<TournamentPlayerProfile />} />
+          {/* <Route path="/tournament-bracket" element={<PlayoffsBracket />} /> */}
+          <Route path="/tournament-rankings" element={<PlayoffsRankings />} />
+          <Route path="/tournament-player-profile" element={<PlayoffsPlayerProfile />} />
           
           {/* ✅ Authentication & User Management */}
           <Route path="/login" element={<Login />} />

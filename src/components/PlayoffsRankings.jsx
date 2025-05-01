@@ -90,7 +90,7 @@ const TournamentRankings = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-          Tournament Rankings
+          Playoffs Rankings
         </h1>
         
         <div className="overflow-hidden rounded-2xl shadow-2xl">

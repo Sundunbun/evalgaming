@@ -82,7 +82,7 @@ const Navbar = () => {
           <button className="dropdown-btn">Tournaments ▼</button>
           {tournamentDropdownOpen && (
             <div className="dropdown-menu">
-              {/* <Link to="/tournament-bracket" className="dropdown-item">Bracket</Link> */}
+              <Link to="/tournament-bracket" className="dropdown-item">Bracket</Link>
               <Link to="/tournament-rankings" className="dropdown-item">Tournament Rankings</Link>
             </div>
           )}

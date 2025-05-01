@@ -21,7 +21,9 @@ const TournamentPlayerProfile = () => {
     { label: 'ACS', value: player.acs.toFixed(1) },
     { label: 'Econ Rating', value: player.econRating.toFixed(1) },
     { label: 'KAST%', value: player.kast.toFixed(1) + "%"},
+    { label: 'AKAST%', value: player.akast.toFixed(1) + "%" },
     { label: 'Headshot %', value: player.headshot.toFixed(1) + "%"},
+    { label: 'ADR', value: player.adr.toFixed(1) },
     { label: 'Trade Percentage', value: player.tradePercentage.toFixed(1) + "%" },
     { label: 'Clutch Factor', value: player.clutchFactor.toFixed(2) }
   ];

@@ -18,13 +18,13 @@ const TournamentPlayerProfile = () => {
     { label: 'Kills', value: player.kills },
     { label: 'Deaths', value: player.deaths },
     { label: 'Assists', value: player.assists },
-    { label: 'ACS', value: player.acs.toFixed(2) },
-    { label: 'Econ Rating', value: player.econRating.toFixed(2) },
-    { label: 'KAST%', value: player.kast.toFixed(2) },
-    { label: 'AKAST%', value: player.akast.toFixed(2) },
-    { label: 'Headshot %', value: player.headshot.toFixed(2) },
-    { label: 'ADR', value: player.adr.toFixed(2) },
-    { label: 'Trade Percentage', value: player.tradePercentage.toFixed(2) },
+    { label: 'ACS', value: player.acs.toFixed(1) },
+    { label: 'Econ Rating', value: player.econRating.toFixed(1) },
+    { label: 'KAST%', value: player.kast.toFixed(1) + "%"},
+    { label: 'AKAST%', value: player.akast.toFixed(1) + "%" },
+    { label: 'Headshot %', value: player.headshot.toFixed(1) + "%"},
+    { label: 'ADR', value: player.adr.toFixed(1) },
+    { label: 'Trade Percentage', value: player.tradePercentage.toFixed(1) + "%" },
     { label: 'Clutch Factor', value: player.clutchFactor.toFixed(2) }
   ];
 

@@ -9,6 +9,7 @@ const Navbar = () => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [recruitingDropdownOpen, setRecruitingDropdownOpen] = useState(false);
   const [legalDropdownOpen, setLegalDropdownOpen] = useState(false);
+  const [tournamentDropdownOpen, setTournamentDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -71,6 +72,22 @@ const Navbar = () => {
         </div>
         
         <Link to="/high-school-rankings" className="nav-link">HS Rankings</Link>
+
+        {/* Tournament Dropdown */}
+        <div 
+          className="dropdown-container" 
+          onMouseEnter={() => setTournamentDropdownOpen(true)} 
+          onMouseLeave={() => setTournamentDropdownOpen(false)}
+        >
+          <button className="dropdown-btn">Tournaments ▼</button>
+          {tournamentDropdownOpen && (
+            <div className="dropdown-menu">
+              <Link to="/tournament-bracket" className="dropdown-item">Bracket</Link>
+              <Link to="/tournament-rankings" className="dropdown-item">Tournament Rankings</Link>
+            </div>
+          )}
+        </div>
+
         <Link to="/about" className="nav-link">About</Link>
         <Link to="/partnerships" className="nav-link">Partnerships</Link>
         
@@ -98,9 +115,10 @@ const Navbar = () => {
             onMouseEnter={() => setProfileDropdownOpen(true)} 
             onMouseLeave={() => setProfileDropdownOpen(false)}
           >
-            <button className="dropdown-btn">My Profile ▼</button>
+            <button className="dropdown-btn">Profile ▼</button>
             {profileDropdownOpen && (
               <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">View Profile</Link>
                 <Link to="/edit-profile" className="dropdown-item">Edit Profile</Link>
                 <button onClick={handleLogout} className="dropdown-item">Logout</button>
               </div>

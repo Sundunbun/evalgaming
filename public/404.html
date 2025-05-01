@@ -4,12 +4,30 @@
     <meta charset="utf-8">
     <title>EVAL Gaming</title>
     <script>
-      // Redirect to hash URL
-      const path = window.location.pathname + window.location.search;
-      window.location.href = '/#' + path;
+      // Get the current path and remove any trailing slashes
+      let path = window.location.pathname;
+      if (path.endsWith('/')) {
+        path = path.slice(0, -1);
+      }
+      
+      // Remove the base path if it exists (for custom domains)
+      const basePath = '/my-supabase-app-fixed';
+      if (path.startsWith(basePath)) {
+        path = path.slice(basePath.length);
+      }
+      
+      // Add the hash and redirect
+      const newUrl = window.location.origin + '/#' + path + window.location.search;
+      window.location.replace(newUrl);
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Redirecting to the correct page...</p>
+    <script>
+      // Fallback redirect after 3 seconds
+      setTimeout(function() {
+        window.location.replace('/');
+      }, 3000);
+    </script>
   </body>
 </html> 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer.jsx';
 
 // ✅ Page Imports
 import HomePage from './pages/HomePage';
@@ -9,8 +10,9 @@ import PartnershipsPage from './pages/PartnershipsPage';
 import PartnershipSignup from './pages/PartnershipSignup';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import TournamentLeaderboard from './pages/TournamentLeaderboard';
 import TournamentBracket from './pages/TournamentBracket';
+import TournamentRankings from './components/TournamentRankings';
+import TournamentPlayerProfile from './pages/TournamentPlayerProfile';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -19,7 +21,7 @@ import EditProfile from './pages/EditProfile';
 
 // ✅ Rankings Pages
 import HighSchoolRankings from './pages/HighSchoolRankings';
-import Valorant from './pages/valorant'; // ✅ Valorant Rankings
+import Valorant from './pages/valorant';
 
 // ✅ Auth & User Management
 import Login from './pages/Login';
@@ -55,7 +57,8 @@ function App() {
 
           {/* ✅ Tournament Pages */}
           <Route path="/tournament-bracket" element={<TournamentBracket />} />
-          <Route path="/tournament-leaderboard" element={<TournamentLeaderboard />} />
+          <Route path="/tournament-rankings" element={<TournamentRankings />} />
+          <Route path="/tournament-player-profile" element={<TournamentPlayerProfile />} />
           
           {/* ✅ Authentication & User Management */}
           <Route path="/login" element={<Login />} />
@@ -64,6 +67,7 @@ function App() {
           <Route path="/signup/coach" element={<CoachSignup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

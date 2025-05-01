@@ -30,9 +30,9 @@ const TournamentRankings = () => {
                 mainAgent: player['Main Agent'],
                 role: player.Role,
                 acs: parseFloat(player.ACS) || 0,
-                kills: parseInt(player.Kills) || 0,
-                deaths: parseInt(player.Deaths) || 0,
-                assists: parseInt(player.Assists) || 0,
+                kills: parseFloat(player.Kills) || 0,
+                deaths: parseFloat(player.Death) || 0,
+                assists: parseFloat(player.Assists) || 0,
                 econRating: parseFloat(player['Econ Rating']) || 0,
                 kast: parseFloat(player['KAST%']) || 0,
                 akast: parseFloat(player['AKAST%']) || 0,
@@ -101,7 +101,10 @@ const TournamentRankings = () => {
                   <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Rank</th>
                   <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Username</th>
                   <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Team</th>
-                  <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">EVAL</th>
+                  <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Kills</th>
+                  <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Deaths</th>
+                  <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Assists</th>
+                  <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">ACS</th>
                   <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Main Agent</th>
                   <th className="py-6 px-8 text-left text-blue-400 font-bold text-xl">Role</th>
                 </tr>
@@ -116,7 +119,10 @@ const TournamentRankings = () => {
                     <td className="py-6 px-8 font-bold text-xl">#{player.rank}</td>
                     <td className="py-6 px-8 font-bold text-xl">{player.username}</td>
                     <td className="py-6 px-8 font-bold text-xl">{player.team}</td>
-                    <td className="py-6 px-8 font-bold text-xl">{player.evalScore.toFixed(2)}</td>
+                    <td className="py-6 px-8 font-bold text-xl">{player.kills.toFixed(1)}</td>
+                    <td className="py-6 px-8 font-bold text-xl">{player.deaths.toFixed(1)}</td>
+                    <td className="py-6 px-8 font-bold text-xl">{player.assists.toFixed(1)}</td>
+                    <td className="py-6 px-8 font-bold text-xl">{player.acs.toFixed(1)}</td>
                     <td className="py-6 px-8 font-bold text-xl">{player.mainAgent}</td>
                     <td className="py-6 px-8 font-bold text-xl">{player.role}</td>
                   </tr>

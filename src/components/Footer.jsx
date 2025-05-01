@@ -40,7 +40,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li>
-                <a href="mailto:contact@evalgaming.com" className="hover:text-gray-300">contact@evalgaming.com</a>
+                <Link to="/about" className="hover:text-gray-300">About Us</Link>
               </li>
             </ul>
           </div>

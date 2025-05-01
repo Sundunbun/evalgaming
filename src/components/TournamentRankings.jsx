@@ -29,10 +29,16 @@ const TournamentRankings = () => {
                 evalScore: parseFloat(player.EVAL) || 0,
                 mainAgent: player['Main Agent'],
                 role: player.Role,
+                kills: parseFloat(player.Kills) || 0,
+                deaths: parseFloat(player.Deaths) || 0,
+                assists: parseFloat(player.Assists) || 0,
                 acs: parseFloat(player.ACS) || 0,
+<<<<<<< HEAD
                 kills: parseFloat(player.Kills) || 0,
                 deaths: parseFloat(player.Death) || 0,
                 assists: parseFloat(player.Assists) || 0,
+=======
+>>>>>>> c2ca38410e2efd43b8f4603538ffeaad79e61850
                 econRating: parseFloat(player['Econ Rating']) || 0,
                 kast: parseFloat(player['KAST%']) || 0,
                 akast: parseFloat(player['AKAST%']) || 0,

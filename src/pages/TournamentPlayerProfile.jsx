@@ -15,10 +15,10 @@ const TournamentPlayerProfile = () => {
   }
 
   const stats = [
-    { label: 'ACS', value: player.acs.toFixed(2) },
     { label: 'Kills', value: player.kills },
     { label: 'Deaths', value: player.deaths },
     { label: 'Assists', value: player.assists },
+    { label: 'ACS', value: player.acs.toFixed(2) },
     { label: 'Econ Rating', value: player.econRating.toFixed(2) },
     { label: 'KAST%', value: player.kast.toFixed(2) },
     { label: 'AKAST%', value: player.akast.toFixed(2) },

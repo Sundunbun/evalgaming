@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -31,16 +31,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/privacy-policy" className="hover:text-gray-300">Privacy Policy</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="mailto:contact@evalgaming.com" className="hover:text-gray-300">contact@evalgaming.com</a>
               </li>
             </ul>
           </div>

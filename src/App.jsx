@@ -13,6 +13,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import PlayoffsBracket from './pages/TournamentBracket';
 import PlayoffsRankings from './components/PlayoffsRankings.jsx';
 import PlayoffsPlayerProfile from './pages/TournamentPlayerProfile';
+import Profile from './pages/Profile';
 
 // ✅ Recruiting & Profiles
 import CoachRecruitingPage from './pages/CoachRecruitingPage';
@@ -50,6 +51,7 @@ function App() {
           <Route path="/coach-recruiting" element={<CoachRecruitingPage />} />
           <Route path="/player-recruiting" element={<PlayerRecruitingPage />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/profile" element={<Profile />} />
 
           {/* ✅ Rankings Pages */}
           <Route path="/high-school-rankings" element={<HighSchoolRankings />} />

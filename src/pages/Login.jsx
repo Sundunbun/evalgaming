@@ -8,42 +8,72 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "EVAL | Login";
-  }, []);
+    
+    // Check if user is already logged in
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate('/dashboard'); // Redirect to dashboard if already logged in
+      }
+    };
+    checkUser();
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage('');
+    setIsLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      console.error("Login Error:", error.message);
-      setMessage(`Login failed: ${error.message}`);
-    } else {
-      console.log("Login successful!", data);
-      setMessage("Login successful! Redirecting...");
-      // Redirect user or handle login success
+      if (error) {
+        console.error("Login Error:", error.message);
+        setMessage(`Login failed: ${error.message}`);
+      } else {
+        console.log("Login successful!", data);
+        setMessage("Login successful! Redirecting...");
+        // Redirect to profile page after successful login
+        navigate('/profile');
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      setMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleForgotPassword = async () => {
     if (!email) {
-      setMessage("Error sending reset email: Password recovery requires an email");
+      setMessage("Please enter your email address to reset your password");
       return;
     }
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
-    if (error) {
-      setMessage(`Error sending reset email: ${error.message}`);
-    } else {
-      setMessage('Password reset email sent!');
+    setIsLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      
+      if (error) {
+        setMessage(`Error sending reset email: ${error.message}`);
+      } else {
+        setMessage('Password reset email sent! Please check your inbox.');
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      setMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -146,6 +176,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             style={styles.input}
+            disabled={isLoading}
           />
         </div>
         <div style={styles.inputGroup}>
@@ -156,11 +187,30 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
             style={styles.input}
+            disabled={isLoading}
           />
         </div>
-        <button type="submit" style={styles.button}>Log In</button>
+        <button 
+          type="submit" 
+          style={{
+            ...styles.button,
+            opacity: isLoading ? 0.7 : 1,
+            cursor: isLoading ? 'not-allowed' : 'pointer'
+          }}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Logging in...' : 'Log In'}
+        </button>
       </form>
-      <button onClick={handleForgotPassword} style={styles.link}>
+      <button 
+        onClick={handleForgotPassword} 
+        style={{
+          ...styles.link,
+          opacity: isLoading ? 0.7 : 1,
+          cursor: isLoading ? 'not-allowed' : 'pointer'
+        }}
+        disabled={isLoading}
+      >
         Forgot Password?
       </button>
       <p style={styles.text}>

@@ -59,6 +59,69 @@ const Signup = () => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage('');
+
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setMessage('Error: Passwords do not match');
+      return;
+    }
+
+    try {
+      // 1. Sign up the user with Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (authError) throw authError;
+
+      // 2. Create the player profile in the players table
+      const { error: profileError } = await supabase
+        .from('players')
+        .insert([
+          {
+            id: authData.user.id,
+            full_name: formData.full_name,
+            school: formData.school,
+            coach_email: formData.coach_email,
+            guardian_email: formData.guardian_email,
+            gpa: parseFloat(formData.gpa) || null,
+            transcript: formData.transcript ? URL.createObjectURL(formData.transcript) : null,
+            games_played: formData.games_played,
+            highest_ranks: formData.highest_ranks,
+            trackergg_prof: formData.trackergg_profile,
+          },
+        ]);
+
+      if (profileError) throw profileError;
+
+      setMessage('Signup successful! Please check your email for verification.');
+      
+      // Clear form
+      setFormData({
+        email: '',
+        password: '',
+        confirmPassword: '',
+        full_name: '',
+        school: '',
+        coach_email: '',
+        guardian_email: '',
+        gpa: '',
+        transcript: null,
+        games_played: [],
+        highest_ranks: {},
+        trackergg_profile: '',
+      });
+
+    } catch (error) {
+      console.error('Error during signup:', error);
+      setMessage(`Error: ${error.message}`);
+    }
+  };
+
   useEffect(() => {
     document.title = "EVAL | Sign Up";
   }, []);
@@ -73,7 +136,7 @@ const Signup = () => {
 
     {message && <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '12px', color: message.includes('Error') ? 'red' : 'green' }}>{message}</p>}
 
-    <form style={{ display: 'flex', flexDirection: 'column' }}>
+    <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
       {/* Email & Full Name */}
       <div style={{ display: 'flex', gap: '5px' }}>
         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required 

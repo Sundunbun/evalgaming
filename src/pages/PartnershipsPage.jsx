@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import gseLogo from '../assets/GSE_LOGO.png';
 import kellerLogo from '../assets/keller.png';
-import psvLogo from '../assets/PSV.png';
+import psvLogo from '../assets/psv.png';
 
 const Partnerships = () => {
   useEffect(() => {

@@ -36,6 +36,7 @@ jobs:
 
       - name: Store build files
         run: |
+          echo "Current workspace: ${{ github.workspace }}"
           # Create a persistent build directory in workspace
           mkdir -p ${{ github.workspace }}/build-output
           # Copy files
@@ -53,29 +54,35 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: gh-pages
+        id: checkout
 
       - name: Copy files to gh-pages
         run: |
+          # Print current directory and workspace
+          echo "Current directory: $(pwd)"
+          echo "Workspace: ${{ github.workspace }}"
+          echo "Checkout result: ${{ steps.checkout.outputs.git_status }}"
+          
           # Verify source directory exists
-          if [ ! -d "$GITHUB_WORKSPACE/build-output" ]; then
-            echo "Error: build-output directory not found"
+          if [ ! -d "${{ github.workspace }}/build-output" ]; then
+            echo "Error: build-output directory not found at ${{ github.workspace }}/build-output"
             exit 1
           fi
           
           # Verify source directory has files
-          if [ ! "$(ls -A $GITHUB_WORKSPACE/build-output/)" ]; then
+          if [ ! "$(ls -A ${{ github.workspace }}/build-output/)" ]; then
             echo "Error: build-output directory is empty"
             exit 1
           fi
           
           echo "Files found in build-output directory:"
-          ls -la $GITHUB_WORKSPACE/build-output/
+          ls -la ${{ github.workspace }}/build-output/
           
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
-          cp -r $GITHUB_WORKSPACE/build-output/* .
+          cp -r ${{ github.workspace }}/build-output/* .
 
       - name: Configure git
         run: |

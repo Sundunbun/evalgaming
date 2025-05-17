@@ -1,5 +1,7 @@
 # I.A Deployment Script
 # Usage instructions: 
+# MAKE SURE YOUR GH-PAGES BRANCH ISNT DIVERGENT (RUN GIT PULL)
+
 # 1. Make sure you are on the viteWebsite branch (should work even if not)
 # 2. Run ./deploy.sh
 # 3. Wait for the script to complete

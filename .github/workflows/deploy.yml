@@ -19,8 +19,15 @@ jobs:
         with:
           node-version: "18"
 
+      - name: Create .env file
+        run: |
+          echo "VITE_SUPABASE_URL=${{ secrets.SUPABASE_URL }}" > .env
+          echo "VITE_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env
+          echo "Created .env file with contents:"
+          cat .env
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build

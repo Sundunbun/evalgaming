@@ -28,9 +28,9 @@ jobs:
       - name: Store build files
         run: |
           # Create a temporary directory for build files
-          mkdir -p temp-build
+          mkdir -p ${{ github.workspace }}/temp-build
           # Copy build files to temporary directory
-          cp -r dist/* temp-build/
+          cp -r dist/* ${{ github.workspace }}/temp-build/
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
           # Remove existing files
           rm -rf *
           # Copy build files from temporary directory
-          cp -r temp-build/* .
+          cp -r ${{ github.workspace }}/temp-build/* .
 
       - name: Configure git
         run: |

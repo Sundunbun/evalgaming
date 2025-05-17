@@ -36,19 +36,24 @@ jobs:
 
       - name: Store build files
         run: |
-          echo "Current workspace: ${{ github.workspace }}"
-          # Create a persistent build directory in workspace
-          mkdir -p ${{ github.workspace }}/build-output
+          # Create a persistent build directory
+          mkdir -p build-output
           # Copy files
-          cp -r dist/* ${{ github.workspace }}/build-output/
+          cp -r dist/* build-output/
           # Verify copy
-          if [ "$(ls -A ${{ github.workspace }}/build-output/)" ]; then
+          if [ "$(ls -A build-output/)" ]; then
             echo "Successfully copied files to build-output:"
-            ls -la ${{ github.workspace }}/build-output/
+            ls -la build-output/
           else
             echo "Error: No files were copied to build-output"
             exit 1
           fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
@@ -56,33 +61,34 @@ jobs:
           ref: gh-pages
         id: checkout
 
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
+
       - name: Copy files to gh-pages
         run: |
-          # Print current directory and workspace
-          echo "Current directory: $(pwd)"
-          echo "Workspace: ${{ github.workspace }}"
-          echo "Checkout result: ${{ steps.checkout.outputs.git_status }}"
-          
           # Verify source directory exists
-          if [ ! -d "${{ github.workspace }}/build-output" ]; then
-            echo "Error: build-output directory not found at ${{ github.workspace }}/build-output"
+          if [ ! -d "build-output" ]; then
+            echo "Error: build-output directory not found"
             exit 1
           fi
           
           # Verify source directory has files
-          if [ ! "$(ls -A ${{ github.workspace }}/build-output/)" ]; then
+          if [ ! "$(ls -A build-output/)" ]; then
             echo "Error: build-output directory is empty"
             exit 1
           fi
           
           echo "Files found in build-output directory:"
-          ls -la ${{ github.workspace }}/build-output/
+          ls -la build-output/
           
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
-          cp -r ${{ github.workspace }}/build-output/* .
+          cp -r build-output/* .
 
       - name: Configure git
         run: |

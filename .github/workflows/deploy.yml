@@ -34,21 +34,6 @@ jobs:
           echo "dist directory exists and contains:"
           ls -la dist/
 
-      - name: Copy build files to temp
-        run: |
-          # Create temp directory
-          mkdir -p temp-build
-          # Copy files
-          cp -r dist/* temp-build/
-          # Verify copy
-          if [ "$(ls -A temp-build/)" ]; then
-            echo "Successfully copied files to temp-build:"
-            ls -la temp-build/
-          else
-            echo "Error: No files were copied to temp-build"
-            exit 1
-          fi
-
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -56,25 +41,26 @@ jobs:
 
       - name: Copy files to gh-pages
         run: |
-          # First verify if temp-build exists and has files
-          if [ ! -d "../temp-build" ]; then
-            echo "Error: temp-build directory not found"
+          # Verify source directory exists
+          if [ ! -d "../dist" ]; then
+            echo "Error: dist directory not found in source branch"
             exit 1
           fi
           
-          if [ ! "$(ls -A ../temp-build/)" ]; then
-            echo "Error: temp-build directory is empty"
+          # Verify source directory has files
+          if [ ! "$(ls -A ../dist/)" ]; then
+            echo "Error: dist directory is empty"
             exit 1
           fi
           
-          echo "Files found in temp-build:"
-          ls -la ../temp-build/
+          echo "Files found in source dist directory:"
+          ls -la ../dist/
           
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
-          cp -r ../temp-build/* .
+          cp -r ../dist/* .
 
       - name: Configure git
         run: |

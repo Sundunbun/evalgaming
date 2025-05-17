@@ -26,11 +26,10 @@ jobs:
         run: npm run build
 
       - name: Store build files
-        run: |
-          # Create a temporary directory for build files
-          mkdir -p ${{ github.workspace }}/build-temp
-          # Copy build files to temporary directory
-          cp -r dist/* ${{ github.workspace }}/build-temp/
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: dist/
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
@@ -38,11 +37,10 @@ jobs:
           ref: gh-pages
 
       - name: Copy build files
-        run: |
-          # Remove existing files
-          rm -rf *
-          # Copy build files from temporary directory
-          cp -r ${{ github.workspace }}/build-temp/* .
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: .
 
       - name: Configure git
         run: |

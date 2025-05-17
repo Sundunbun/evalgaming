@@ -36,14 +36,14 @@ jobs:
 
       - name: Store build files
         run: |
-          # Create a persistent build directory
-          mkdir -p build-output
+          # Create a persistent build directory in workspace
+          mkdir -p ${{ github.workspace }}/build-output
           # Copy files
-          cp -r dist/* build-output/
+          cp -r dist/* ${{ github.workspace }}/build-output/
           # Verify copy
-          if [ "$(ls -A build-output/)" ]; then
+          if [ "$(ls -A ${{ github.workspace }}/build-output/)" ]; then
             echo "Successfully copied files to build-output:"
-            ls -la build-output/
+            ls -la ${{ github.workspace }}/build-output/
           else
             echo "Error: No files were copied to build-output"
             exit 1
@@ -57,25 +57,25 @@ jobs:
       - name: Copy files to gh-pages
         run: |
           # Verify source directory exists
-          if [ ! -d "build-output" ]; then
+          if [ ! -d "$GITHUB_WORKSPACE/build-output" ]; then
             echo "Error: build-output directory not found"
             exit 1
           fi
           
           # Verify source directory has files
-          if [ ! "$(ls -A build-output/)" ]; then
+          if [ ! "$(ls -A $GITHUB_WORKSPACE/build-output/)" ]; then
             echo "Error: build-output directory is empty"
             exit 1
           fi
           
           echo "Files found in build-output directory:"
-          ls -la build-output/
+          ls -la $GITHUB_WORKSPACE/build-output/
           
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
-          cp -r build-output/* .
+          cp -r $GITHUB_WORKSPACE/build-output/* .
 
       - name: Configure git
         run: |

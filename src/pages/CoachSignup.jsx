@@ -132,12 +132,9 @@ const CoachSignup = () => {
     input: {
       width: '100%',
       padding: '8px',
-      border: '1px solid #ccc',
-      backgroundColor: 'white',
       border: '2px solid purple',
+      backgroundColor: 'white',
       borderRadius: '4px',
-      padding: '8px',
-      width: '100%',
     },
     
     button: {

@@ -32,8 +32,8 @@ jobs:
 
       - name: Copy build files
         run: |
-          # Remove existing files except .env
-          find . -maxdepth 1 -not -name "\.env" -not -name "\.git" -exec rm -rf {} +
+          # Remove existing files
+          rm -rf *
           # Copy build files
           cp -r ../dist/* .
 

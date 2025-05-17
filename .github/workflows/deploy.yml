@@ -34,6 +34,21 @@ jobs:
           echo "dist directory exists and contains:"
           ls -la dist/
 
+      - name: Store build files
+        run: |
+          # Create a persistent build directory
+          mkdir -p build-output
+          # Copy files
+          cp -r dist/* build-output/
+          # Verify copy
+          if [ "$(ls -A build-output/)" ]; then
+            echo "Successfully copied files to build-output:"
+            ls -la build-output/
+          else
+            echo "Error: No files were copied to build-output"
+            exit 1
+          fi
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -42,25 +57,25 @@ jobs:
       - name: Copy files to gh-pages
         run: |
           # Verify source directory exists
-          if [ ! -d "../dist" ]; then
-            echo "Error: dist directory not found in source branch"
+          if [ ! -d "build-output" ]; then
+            echo "Error: build-output directory not found"
             exit 1
           fi
           
           # Verify source directory has files
-          if [ ! "$(ls -A ../dist/)" ]; then
-            echo "Error: dist directory is empty"
+          if [ ! "$(ls -A build-output/)" ]; then
+            echo "Error: build-output directory is empty"
             exit 1
           fi
           
-          echo "Files found in source dist directory:"
-          ls -la ../dist/
+          echo "Files found in build-output directory:"
+          ls -la build-output/
           
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
-          cp -r ../dist/* .
+          cp -r build-output/* .
 
       - name: Configure git
         run: |

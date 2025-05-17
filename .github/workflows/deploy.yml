@@ -34,6 +34,9 @@ jobs:
           echo "dist directory exists and contains:"
           ls -la dist/
 
+      - name: Create build-output directory
+        run: mkdir -p build-output
+
       - name: Store build files
         run: |
           cp -r dist/* build-output/

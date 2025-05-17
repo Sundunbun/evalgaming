@@ -93,6 +93,7 @@ const Signup = () => {
             games_played: formData.games_played,
             highest_ranks: formData.highest_ranks,
             trackergg_profile: formData.trackergg_profile,
+            email: formData.email
           },
         ]);
 

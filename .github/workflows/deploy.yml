@@ -41,8 +41,14 @@ jobs:
             exit 1
           fi
           
-          # Checkout gh-pages branch
-          git checkout gh-pages
+          # Check if gh-pages branch exists
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            echo "gh-pages branch exists"
+            git checkout gh-pages
+          else
+            echo "gh-pages branch does not exist, creating it"
+            git checkout -b gh-pages
+          fi
           
           # Copy files
           if [ ! -d "../build-output" ]; then

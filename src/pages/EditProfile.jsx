@@ -9,7 +9,7 @@ const EditProfile = () => {
     guardian_email: '',
     gpa: '',
     transcript: '',
-    trackergg_prof: '',
+    trackergg_profile: '',
     games_played: [],
     highest_ranks: {},
   });
@@ -36,7 +36,7 @@ const EditProfile = () => {
             guardian_email: data.guardian_email || '',
             gpa: data.gpa || '',
             transcript: data.transcript || '',
-            trackergg_prof: data.trackergg_prof || '',
+            trackergg_profile: data.trackergg_profile || '',
             games_played: data.games_played || [],
             highest_ranks: data.highest_ranks || {},
           });

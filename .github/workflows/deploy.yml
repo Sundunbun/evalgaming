@@ -19,18 +19,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Download artifact actions
-        uses: actions/download-artifact@v3
-        with:
-          name: build-artifact
-          path: build-output/
-
-      - name: Download upload artifact action
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifact
-          path: build-output/
-
       - name: Install dependencies
         run: npm install
 
@@ -64,121 +52,15 @@ jobs:
             exit 1
           fi
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: build-artifact
           path: build-output/
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
-          ref: gh-pages
-        id: checkout
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: build-artifact
-          path: build-output/
-
-      - name: Copy files to gh-pages
-        run: |
-          # Verify source directory exists
-          if [ ! -d "build-output" ]; then
-            echo "Error: build-output directory not found"
-            exit 1
-          fi
-          
-          # Verify source directory has files
-          if [ ! "$(ls -A build-output/)" ]; then
-            echo "Error: build-output directory is empty"
-            exit 1
-          fi
-          
-          echo "Files found in build-output directory:"
-          ls -la build-output/
-          
-          # Now remove existing files and copy new ones
-          echo "Removing existing files..."
-          rm -rf *
-          echo "Copying new files..."
-          cp -r build-output/* .
-
-      - name: Configure git
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-      - name: Add and commit changes
-        run: |
-          git add .
-          git commit -m "Update dist folder with new build" || true
-
-      - name: Push changes
-        run: |
-          git push origin gh-pages
-          # Install dependencies
-          npm install
-          
-          # Build project
-          npm run build
-          
-          # Verify build
-          if [ ! -d "dist" ]; then
-            echo "Error: dist directory not found after build"
-            exit 1
-          fi
-          echo "dist directory exists and contains:"
-          ls -la dist/
-          
-          # Store build files
-          mkdir -p build-output
-          cp -r dist/* build-output/
-          if [ "$(ls -A build-output/)" ]; then
-            echo "Successfully copied files to build-output:"
-            ls -la build-output/
-          else
-            echo "Error: No files were copied to build-output"
-            exit 1
-          fi
-          
-          # Check if gh-pages branch exists
-          if git show-ref --verify --quiet refs/heads/gh-pages; then
-            echo "gh-pages branch exists"
-            git checkout gh-pages
-          else
-            echo "gh-pages branch does not exist, creating it"
-            git checkout -b gh-pages
-          fi
-          
-          # Copy files
-          if [ ! -d "../build-output" ]; then
-            echo "Error: build-output directory not found"
-            exit 1
-          fi
-          
-          if [ ! "$(ls -A ../build-output/)" ]; then
-            echo "Error: build-output directory is empty"
-            exit 1
-          fi
-          
-          echo "Files found in build-output directory:"
-          ls -la ../build-output/
-          
-          # Remove existing files and copy new ones
-          echo "Removing existing files..."
-          rm -rf *
-          echo "Copying new files..."
-          cp -r ../build-output/* .
-          
-          # Configure git
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
-          # Add and commit changes
-          git add .
-          git commit -m "Update dist folder with new build" || true
-          
-          # Push changes
-          git push origin gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          target_branch: gh-pages
+          build_dir: build-output/

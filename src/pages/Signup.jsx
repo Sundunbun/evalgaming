@@ -92,7 +92,7 @@ const Signup = () => {
             transcript: formData.transcript ? URL.createObjectURL(formData.transcript) : null,
             games_played: formData.games_played,
             highest_ranks: formData.highest_ranks,
-            trackergg_prof: formData.trackergg_profile,
+            trackergg_profile: formData.trackergg_profile,
           },
         ]);
 

@@ -14,8 +14,93 @@ jobs:
         with:
           ref: viteWebsite
 
-      - name: Build and deploy
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Verify build directory exists
         run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory not found after build"
+            exit 1
+          fi
+          echo "dist directory exists and contains:"
+          ls -la dist/
+
+      - name: Store build files
+        run: |
+          # Copy files to build directory
+          cp -r dist/* build-output/
+          # Verify copy
+          if [ "$(ls -A build-output/)" ]; then
+            echo "Successfully copied files to build-output:"
+            ls -la build-output/
+          else
+            echo "Error: No files were copied to build-output"
+            exit 1
+          fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+        id: checkout
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
+
+      - name: Copy files to gh-pages
+        run: |
+          # Verify source directory exists
+          if [ ! -d "build-output" ]; then
+            echo "Error: build-output directory not found"
+            exit 1
+          fi
+          
+          # Verify source directory has files
+          if [ ! "$(ls -A build-output/)" ]; then
+            echo "Error: build-output directory is empty"
+            exit 1
+          fi
+          
+          echo "Files found in build-output directory:"
+          ls -la build-output/
+          
+          # Now remove existing files and copy new ones
+          echo "Removing existing files..."
+          rm -rf *
+          echo "Copying new files..."
+          cp -r build-output/* .
+
+      - name: Configure git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Add and commit changes
+        run: |
+          git add .
+          git commit -m "Update dist folder with new build" || true
+
+      - name: Push changes
+        run: |
+          git push origin gh-pages
           # Install dependencies
           npm install
           

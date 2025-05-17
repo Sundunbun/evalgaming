@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: viteWebsite
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
@@ -26,19 +26,19 @@ jobs:
         run: npm run build
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: dist
 
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
         id: checkout
 
       - name: Download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
           path: .
@@ -59,16 +59,16 @@ jobs:
             echo "Error: dist directory not found"
             exit 1
           fi
-          
+
           # Verify source directory has files
           if [ ! "$(ls -A dist/)" ]; then
             echo "Error: dist directory is empty"
             exit 1
           fi
-          
+
           echo "Files found in dist directory:"
           ls -la dist/
-          
+
           # Now remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *

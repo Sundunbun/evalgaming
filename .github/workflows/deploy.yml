@@ -25,6 +25,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Store build directory
+        run: |
+          # Store the current directory path
+          echo "BUILD_DIR=$(pwd)" >> $GITHUB_ENV
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -34,8 +39,8 @@ jobs:
         run: |
           # Remove existing files
           rm -rf *
-          # Copy build files from dist directory
-          cp -r ../dist/* .
+          # Copy build files from the stored build directory
+          cp -r ${{ env.BUILD_DIR }}/dist/* .
 
       - name: Configure git
         run: |

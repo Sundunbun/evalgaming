@@ -6,7 +6,7 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 // Debug logs
 console.log('Supabase URL:', supabaseUrl);
 console.log('Supabase Anon Key:', supabaseAnonKey);
-
+console.log("Auto deployed")
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables. Please check your .env file.');
 }

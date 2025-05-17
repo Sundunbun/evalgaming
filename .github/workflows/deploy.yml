@@ -19,6 +19,12 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Download artifact actions
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
+
       - name: Install dependencies
         run: npm install
 

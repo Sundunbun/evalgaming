@@ -25,11 +25,29 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Verify build directory exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory not found after build"
+            exit 1
+          fi
+          echo "dist directory exists and contains:"
+          ls -la dist/
+
       - name: Copy build files to temp
         run: |
-          # Copy build files to a temporary location
+          # Create temp directory
           mkdir -p temp-build
+          # Copy files
           cp -r dist/* temp-build/
+          # Verify copy
+          if [ "$(ls -A temp-build/)" ]; then
+            echo "Successfully copied files to temp-build:"
+            ls -la temp-build/
+          else
+            echo "Error: No files were copied to temp-build"
+            exit 1
+          fi
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3

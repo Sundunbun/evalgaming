@@ -56,9 +56,24 @@ jobs:
 
       - name: Copy files to gh-pages
         run: |
-          # Remove existing files
+          # First verify if temp-build exists and has files
+          if [ ! -d "../temp-build" ]; then
+            echo "Error: temp-build directory not found"
+            exit 1
+          fi
+          
+          if [ ! "$(ls -A ../temp-build/)" ]; then
+            echo "Error: temp-build directory is empty"
+            exit 1
+          fi
+          
+          echo "Files found in temp-build:"
+          ls -la ../temp-build/
+          
+          # Now remove existing files and copy new ones
+          echo "Removing existing files..."
           rm -rf *
-          # Copy from temporary location
+          echo "Copying new files..."
           cp -r ../temp-build/* .
 
       - name: Configure git

@@ -34,8 +34,10 @@ jobs:
         run: |
           # Remove existing files
           rm -rf *
-          # Copy build files
-          cp -r ../dist/* .
+          # Get absolute path to repository root
+          REPO_ROOT=$(git rev-parse --show-toplevel)
+          # Copy build files from viteWebsite branch
+          cp -r "$REPO_ROOT/dist"/* .
 
       - name: Configure git
         run: |

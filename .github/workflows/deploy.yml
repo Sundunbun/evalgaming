@@ -25,29 +25,32 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Verify build directory exists
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "Error: dist directory not found after build"
-            exit 1
-          fi
-          echo "dist directory exists and contains:"
-          ls -la dist/
-
-      - name: Verify build directory exists
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "Error: dist directory not found after build"
-            exit 1
-          fi
-          echo "dist directory exists and contains:"
-          ls -la dist/
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: dist
 
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
           ref: gh-pages
         id: checkout
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: .
+
+      - name: Verify downloaded files
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory not found after download"
+            exit 1
+          fi
+          echo "dist directory exists and contains:"
+          ls -la dist/
 
       - name: Copy files to gh-pages
         run: |

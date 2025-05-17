@@ -41,16 +41,39 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
-          path: .
+          path: build-output
 
       - name: Verify downloaded files
         run: |
-          if [ ! -d "dist" ]; then
-            echo "Error: dist directory not found after download"
+          if [ ! -d "build-output/dist" ]; then
+            echo "Error: build-output/dist directory not found after download"
             exit 1
           fi
-          echo "dist directory exists and contains:"
-          ls -la dist/
+          echo "build-output/dist directory exists and contains:"
+          ls -la build-output/dist/
+
+      - name: Copy files to gh-pages
+        run: |
+          # Verify source directory exists
+          if [ ! -d "build-output/dist" ]; then
+            echo "Error: build-output/dist directory not found"
+            exit 1
+          fi
+          
+          # Verify source directory has files
+          if [ ! "$(ls -A build-output/dist/)" ]; then
+            echo "Error: build-output/dist directory is empty"
+            exit 1
+          fi
+          
+          echo "Files found in build-output/dist directory:"
+          ls -la build-output/dist/
+          
+          # Now remove existing files and copy new ones
+          echo "Removing existing files..."
+          rm -rf *
+          echo "Copying new files..."
+          cp -r build-output/dist/* .
 
       - name: Copy files to gh-pages
         run: |

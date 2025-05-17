@@ -25,6 +25,13 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Store build files
+        run: |
+          # Create a temporary directory for build files
+          mkdir -p build-temp
+          # Copy build files to temporary directory
+          cp -r dist/* build-temp/
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -34,10 +41,8 @@ jobs:
         run: |
           # Remove existing files
           rm -rf *
-          # Get absolute path to repository root
-          REPO_ROOT=$(git rev-parse --show-toplevel)
-          # Copy build files from viteWebsite branch
-          cp -r "$REPO_ROOT/dist"/* .
+          # Copy build files from temporary directory
+          cp -r build-temp/* .
 
       - name: Configure git
         run: |

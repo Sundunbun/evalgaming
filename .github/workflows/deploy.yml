@@ -14,6 +14,12 @@ jobs:
         with:
           ref: viteWebsite
 
+      - name: Download artifact actions
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: build-output/
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:

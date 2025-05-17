@@ -63,7 +63,7 @@ jobs:
       - name: Add and commit changes
         run: |
           git add .
-          git commit -m "Update dist folder with new build" || true
+          git commit -m "Update gh-pages with build from ${GITHUB_REF#refs/heads/} (${GITHUB_SHA::7})" || true
 
       - name: Push changes
         run: |

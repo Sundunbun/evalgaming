@@ -41,7 +41,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact
-          path: build-output
+          path: build-output/dist
 
       - name: Verify downloaded files
         run: |

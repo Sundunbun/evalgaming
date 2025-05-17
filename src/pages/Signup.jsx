@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import rainbowStar from '../assets/rainbow_star.png'; // Adjust the path as needed
 import eLogoWhite from '../assets/eLOGO_white.png'; // Adjust the path as needed
 
+// Comment for testing auto deployment
 const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',

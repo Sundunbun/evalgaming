@@ -49,12 +49,6 @@ jobs:
             exit 1
           fi
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifact
-          path: build-output/
-
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:

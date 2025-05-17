@@ -9,38 +9,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: viteWebsite
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Verify build directory exists
+      - name: Build and deploy
         run: |
+          # Install dependencies
+          npm install
+          
+          # Build project
+          npm run build
+          
+          # Verify build
           if [ ! -d "dist" ]; then
             echo "Error: dist directory not found after build"
             exit 1
           fi
           echo "dist directory exists and contains:"
           ls -la dist/
-
-      - name: Store build files
-        run: |
-          # Create a persistent build directory
+          
+          # Store build files
           mkdir -p build-output
-          # Copy files
           cp -r dist/* build-output/
-          # Verify copy
           if [ "$(ls -A build-output/)" ]; then
             echo "Successfully copied files to build-output:"
             ls -la build-output/
@@ -48,18 +35,11 @@ jobs:
             echo "Error: No files were copied to build-output"
             exit 1
           fi
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
-        with:
-          ref: gh-pages
-        id: checkout
-
-
-
-      - name: Copy files to gh-pages
-        run: |
-          # First verify if build-output exists and has files
+          
+          # Checkout gh-pages branch
+          git checkout gh-pages
+          
+          # Copy files
           if [ ! -d "../build-output" ]; then
             echo "Error: build-output directory not found"
             exit 1
@@ -73,24 +53,19 @@ jobs:
           echo "Files found in build-output directory:"
           ls -la ../build-output/
           
-          # Now remove existing files and copy new ones
+          # Remove existing files and copy new ones
           echo "Removing existing files..."
           rm -rf *
           echo "Copying new files..."
           cp -r ../build-output/* .
-
-      - name: Configure git
-        run: |
+          
+          # Configure git
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-
-      - name: Add and commit changes
-        run: |
+          
+          # Add and commit changes
           git add .
           git commit -m "Update dist folder with new build" || true
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Push changes
+          git push origin gh-pages

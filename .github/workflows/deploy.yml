@@ -59,19 +59,19 @@ jobs:
             echo "Error: build-output/dist directory not found"
             exit 1
           fi
-          
+
           # Verify source directory has files
           if [ ! "$(ls -A build-output/dist/)" ]; then
             echo "Error: build-output/dist directory is empty"
             exit 1
           fi
-          
+
           echo "Files found in build-output/dist directory:"
           ls -la build-output/dist/
-          
-          # Now remove existing files and copy new ones
-          echo "Removing existing files..."
-          rm -rf *
+
+          # # Now remove existing files and copy new ones
+          # echo "Removing existing files..."
+          # rm -rf *
           echo "Copying new files..."
           cp -r build-output/dist/* .
 

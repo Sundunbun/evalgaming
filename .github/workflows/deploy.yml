@@ -42,14 +42,19 @@ jobs:
 
       - name: Store build files
         run: |
-          # Copy files to build directory
           cp -r dist/* build-output/
-          # Verify copy
           if [ "$(ls -A build-output/)" ]; then
             echo "Successfully copied files to build-output:"
             ls -la build-output/
           else
             echo "Error: No files were copied to build-output"
+            exit 1
+          fi
+
+      - name: Verify build-output before upload
+        run: |
+          if [ ! -d "build-output" ] || [ ! "$(ls -A build-output/)" ]; then
+            echo "Error: build-output directory is either missing or empty"
             exit 1
           fi
 

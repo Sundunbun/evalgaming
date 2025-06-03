@@ -22,7 +22,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "VITE_SUPABASE_URL=https://zrvhbridmzncjlwalprt.supabase.co" > .env
-          echo "VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpydmhicmlkbXpuY2psd2FscHJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA4NDA1OTgsImV4cCI6MjA1NjQxNjU5OH0.kHsvAS0eNyTQ9K9lhxJsfaya4Uyr_NXWKUDf49jASrQ" >> .env
+          echo "VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpydmhicmlkbXpuY2psd2FscHJ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5Njk2MjIsImV4cCI6MjA2NDU0NTYyMn0.zlUUpbcW7ql1VlbZvQcAShatpjroBS581bblLiYhqi4" >> .env
           echo "Created .env file with contents:"
           cat .env
 

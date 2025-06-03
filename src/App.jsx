@@ -31,7 +31,7 @@ import ResetPassword from './components/ResetPassword';
 import UserTypeSelection from './pages/UserTypeSelection';
 import CoachSignup from './pages/CoachSignup';
 
-import './App.css'; // auto deploy test
+import './App.css'; 
 
 function App() {
   return (
